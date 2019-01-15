@@ -10,7 +10,7 @@ android:
     - extra-android-support
     - extra-android-m2repository
     - sys-img-x86-android-28
-    - sys-img-armeabi-v7a-android-22
+    - sys-img-armeabi-v7a-android-17
   licenses:
     - '.+'
     
