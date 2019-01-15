@@ -1,20 +1,25 @@
+
 language: android
-jdk: oraclejdk8
-sudo: false
 android:
   components:
     - tools
-    - build-tools-28.0.3
+    - build-tools-28.0.13
     - android-28
-    - extra-android-m2repository
-    - extra-google-m2repository
+    - platform-tools
     - extra-android-support
-    - sys-img-armeabi-v7a-android-22
+    - extra-android-m2repository
+  licenses:
+    - '.+'
+
+sudo: required
+
+jdk:
+  - oraclejdk8
+
+install: true
 
 before_script:
-  - android list targets # list pre-installed targets # <---- list all installed targets
-  - android list sdk --no-ui --all --extended | grep -E '^id:' | awk -F '"' '{$1=""; print $2}' # <---- list all available components
-  - echo no | android create avd --force -n test -t - android-22 --abi armeabi-v7a # <---- this is failing, "Target id is not valid"
-  - emulator -avd test -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
+  - chmod +x gradlew
+
+script:
+ - chmod +x ./gradlew
