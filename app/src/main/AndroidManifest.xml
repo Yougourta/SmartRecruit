@@ -10,7 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.OffersActivity"
+            android:label="@string/title_activity_offers"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".view.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
