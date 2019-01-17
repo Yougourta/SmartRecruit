@@ -16,8 +16,7 @@ public class OffersActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        OffersViewModel offersViewModel = new OffersViewModel();
-        offersViewModel.setView(this);
+        new OffersViewModel().setView(this);
     }
 
 }

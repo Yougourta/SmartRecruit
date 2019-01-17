@@ -11,14 +11,13 @@ import fr.smartrecruit.view.OffersActivity;
 
 public class MainActivityViewModel {
 
-    public void setViews(MainActivity view, final Context context){
-        Button candidat = view.findViewById(R.id.loginCandidat);
-        candidat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentLogin = new Intent(context, OffersActivity.class);
-                context.startActivity(intentLogin);
-            }
-        });
+    private Context context;
+    public void setViews(MainActivity view, Context context){
+        this.context = context;
+    }
+
+    public void login(View v){
+        Intent intentLogin = new Intent(context, OffersActivity.class);
+        context.startActivity(intentLogin);
     }
 }

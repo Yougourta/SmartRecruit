@@ -23,35 +23,15 @@ public class JobOffer {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
     public String getLocation() {
         return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public int getImg() {
         return img;
-    }
-
-    public void setImg(int img) {
-        this.img = img;
     }
 }

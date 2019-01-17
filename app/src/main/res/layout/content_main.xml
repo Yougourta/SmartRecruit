@@ -44,6 +44,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:background="#FF80CBC4"
+            android:onClick="login"
             android:text="Candidat"
             android:textColor="#FFFFFF" />
     </LinearLayout>
