@@ -17,17 +17,14 @@ public class OffersViewModel {
         JobOffer offer2 = new JobOffer("IKEA", "Vente meubles", "Nanterre", "Salaire min 11.5€", R.mipmap.ic_ikea);
         JobOffer offer3 = new JobOffer("Lotus", "Restauration","Clichy", "Salaire min 9€", R.mipmap.ic_burgerking);
         JobOffer offer4 = new JobOffer("Pizza Hut", "Pizza","Alfortville", "Salaire min 8.5€", R.mipmap.ic_pizzahut);
-
         offers.add(offer1);
         offers.add(offer2);
         offers.add(offer3);
         offers.add(offer4);
-
         offers.add(offer1);
         offers.add(offer2);
         offers.add(offer3);
         offers.add(offer4);
-
         return offers;
     }
 
