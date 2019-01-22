@@ -4,7 +4,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Yougourta_SmartRecruit&metric=alert_status)](https://sonarcloud.io/dashboard?id=Yougourta_SmartRecruit)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Yougourta_SmartRecruit&metric=coverage)](https://sonarcloud.io/dashboard?id=Yougourta_SmartRecruit)
 [![Waffle.io - Issues in progress](https://badge.waffle.io/Yougourta/SmartRecruit.png?label=in%20progress&title=In%20Progress)](http://waffle.io/Yougourta/SmartRecruit)
-<!--[![License](https://img.shields.io/github/license/Yougourta/SmartRecruit.svg?style=flat-square)](LICENSE)-->
+[![License](https://img.shields.io/github/license/Yougourta/SmartRecruit.svg?style=flat-square)](LICENSE)
 [![Version](https://img.shields.io/github/tag/Yougourta/SmartRecruit.svg?label=version&style=flat-square)](build.gradle)
 
 # SmartRecruit
@@ -23,5 +23,5 @@ Clone SmartRecruit repository (File -> Project from Version Control -> Git and p
 # Contributors
 
 - Yougourta AIT SAADA : https://github.com/Yougourta
-- Yanis NIT CHERIF : https://github.com/yanisnait
+- Yanis NAIT CHERIF : https://github.com/yanisnait
 - Ilyes ADJAL : https://github.com/ilyesad
