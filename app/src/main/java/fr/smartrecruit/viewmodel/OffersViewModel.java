@@ -1,6 +1,9 @@
 package fr.smartrecruit.viewmodel;
 
-import android.widget.ListView;
+import android.content.Context;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +31,18 @@ public class OffersViewModel {
         return offers;
     }
 
-    public void setView(OffersActivity view){
-        ListView listOffers = view.findViewById(R.id.listOffers);
-        OffersAdapter offersAdapter = new OffersAdapter(view, getOffers());
-        listOffers.setAdapter(offersAdapter);
+    public void setView(OffersActivity view, Context context){
+        RecyclerView offersRecycler = view.findViewById(R.id.listOffers);
+        OffersAdapter offersAdapter = new OffersAdapter(getOffers(),context);
+        offersRecycler.setAdapter(offersAdapter);
+        offersRecycler.setHasFixedSize(true);
+
+        LinearLayoutManager llm = new LinearLayoutManager(context);
+        offersRecycler.setLayoutManager(llm);
+
+        DividerItemDecoration dividerItemDecoration =
+                new DividerItemDecoration(offersRecycler.getContext(),
+                        llm.getOrientation());
+        offersRecycler.addItemDecoration(dividerItemDecoration);
     }
 }
