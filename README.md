@@ -21,7 +21,6 @@ SmartRecruit is an Android App designed to help you easily get a job using anony
 Clone SmartRecruit repository using Version Control (File -> Project from Version Control -> Git -> SmartRecruit_link -> OK)
 
 # Contributors
-
 - Yougourta AIT SAADA : https://github.com/Yougourta
 - Yanis NAIT CHERIF : https://github.com/yanisnait
 - Ilyes ADJAL : https://github.com/ilyesad
