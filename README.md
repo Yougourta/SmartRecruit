@@ -9,5 +9,21 @@
 [![License](https://img.shields.io/github/license/Yougourta/SmartRecruit.svg?style=flat-square)](LICENSE)
 [![Version](https://img.shields.io/github/tag/Yougourta/SmartRecruit.svg?label=version&style=flat-square)](build.gradle)
 
+# What is it ?
+SmartRecruit is an Android App designed to help you easily get a job using anonymous profiles to focus your application on your skills. 
+
+# Build System
+- [Gradle](https://gradle.org/) :
+
 # Pre-requisites
-- [Android Studio](https://developer.android.com/studio/) 3.x
+- [Android Studio](https://developer.android.com/studio/) : Download and install Android Studio then the Android SDK (Tools -> SDK Manager)
+- Android Emulator : Create a virtual device using AVD Manager (Tools -> AVD Manager -> Create Virtual Device)
+
+# Launch SmartRecruit
+Clone SmartRecruit repository (File -> Project from Version Control -> Git and past the link)
+
+# Contributors
+
+- Yougourta AIT SAADA : (https://github.com/Yougourta)
+- Yanis NIT CHERIF : (https://github.com/yanisnait)
+- Ilyes ADJAL : (https://github.com/ilyesad)
