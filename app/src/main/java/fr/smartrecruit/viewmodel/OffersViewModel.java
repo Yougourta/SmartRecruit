@@ -4,15 +4,18 @@ import android.content.Context;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.smartrecruit.R;
 import fr.smartrecruit.data.JobOffer;
-import fr.smartrecruit.view.OffersActivity;
 
 public class OffersViewModel {
+
+    private Context context;
 
     private List<JobOffer> getOffers(){
         List<JobOffer> offers = new ArrayList();
@@ -31,7 +34,8 @@ public class OffersViewModel {
         return offers;
     }
 
-    public void setView(OffersActivity view, Context context){
+    public void setView(View view, Context context){
+        this.context = context;
         RecyclerView offersRecycler = view.findViewById(R.id.listOffers);
         OffersAdapter offersAdapter = new OffersAdapter(getOffers(),context);
         offersRecycler.setAdapter(offersAdapter);
@@ -44,5 +48,13 @@ public class OffersViewModel {
                 new DividerItemDecoration(offersRecycler.getContext(),
                         llm.getOrientation());
         offersRecycler.addItemDecoration(dividerItemDecoration);
+    }
+
+    public void apply(View view){
+        Toast.makeText(context, "Hello darkness my old friend", Toast.LENGTH_SHORT).show();
+    }
+
+    public void favorite(View view){
+        Toast.makeText(context, "Hello darkness my old friend", Toast.LENGTH_SHORT).show();
     }
 }

@@ -77,16 +77,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Candidater"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:onClick="loginCandidat"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <Button
             android:id="@+id/favoris"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Favoris"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:onClick="loginRecruteur"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     </LinearLayout>
 
     <RatingBar
