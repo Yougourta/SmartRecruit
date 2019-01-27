@@ -17,27 +17,16 @@ import fr.smartrecruit.data.JobOffer;
 
 public class OffersViewModel {
     private List<JobOffer> offers = new ArrayList();
+    private final String DUMMY_TEXT = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+    private final String DUMMY_IMAGE = "https://cdn.pixabay.com/photo/2016/03/28/00/37/flat-1284770_960_720.png";
+    private final String DUMMY_COMPANY = "Company #";
+    private final String DUMMY_POSITION = "Offer #";
+    private final String DUMMY_LOCATION = "Location #";
+    private final String DUMMY_POSTED_DATE = "Posted 1 day ago";
+
     private List<JobOffer> getOffers(){
-        JobOffer offer1 = new JobOffer("Burger King", "Serveur H/F", "Cormeilles-en-parisis", "Salaire min 7.5€", "https://static.actu.fr/uploads/2016/03/DSC_0090-1024x680.jpg");
-        JobOffer offer2 = new JobOffer("IKEA", "Vendeur H/F", "Nanterre", "Salaire min 11.5€", "https://www.creads.fr/app/uploads/sites/1/2017/02/2000px-ikea_logo.svg_.png");
-        JobOffer offer3 = new JobOffer("Lotus", "Cuisinier H/F","Clichy", "Salaire min 9€", "https://u.tfstatic.com/restaurant_photos/108/20108/169/612/le-lotus-blanc-vue-de-la-mezzanine-b46e7.jpg");
-        JobOffer offer4 = new JobOffer("Pizza Hut", "Caissier H/F","Alfortville", "Salaire min 8.5€", "http://www.identilux.fr/lib/images/habillagefacade/33.jpg");
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer3);
-        offers.add(offer4);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer3);
-        offers.add(offer4);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer3);
-        offers.add(offer4);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer3);
-        offers.add(offer4);
+        JobOffer offer = new JobOffer(DUMMY_COMPANY, DUMMY_POSITION, DUMMY_LOCATION, DUMMY_TEXT, DUMMY_POSTED_DATE, DUMMY_IMAGE);
+        for(int i=0; i<5; i++){ offers.add(offer); }
         return offers;
     }
 
@@ -61,7 +50,7 @@ public class OffersViewModel {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                JobOffer offer = new JobOffer("Added row", "Added row","Added row", "Added row", "https://www.arris.com/globalassets/images/other/android_tv_expansion.jpg");
+                JobOffer offer = new JobOffer("Added row", "Added row","Added row", DUMMY_TEXT, DUMMY_POSTED_DATE, "http://www.bluthemes.com/themes/calypso/wp-content/uploads/sites/17/2015/01/101.jpg");
                 offers.add(offer);
                 swipeRefreshLayout.setRefreshing(false);
             }

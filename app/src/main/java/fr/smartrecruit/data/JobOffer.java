@@ -6,12 +6,14 @@ public class JobOffer {
     private String location;
     private String description;
     private String img;
+    private String datePosted;
 
-    public JobOffer(String company, String position, String location, String description, String img) {
+    public JobOffer(String company, String position, String location, String description, String datePosted, String img) {
         this.company = company;
         this.position = position;
         this.location = location;
         this.description = description;
+        this.datePosted = datePosted;
         this.img = img;
     }
 
@@ -33,5 +35,9 @@ public class JobOffer {
 
     public String getImg() {
         return img;
+    }
+
+    public String getDatePosted() {
+        return datePosted;
     }
 }

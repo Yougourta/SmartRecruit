@@ -17,6 +17,7 @@ public class OffersViewHolder extends RecyclerView.ViewHolder{
     private TextView position;
     private TextView location;
     private TextView description;
+    private TextView postedDate;
 
     public OffersViewHolder(View itemView) {
         super(itemView);
@@ -29,6 +30,7 @@ public class OffersViewHolder extends RecyclerView.ViewHolder{
         position = view.findViewById(R.id.offer_position);
         location = view.findViewById(R.id.offer_location);
         description = view.findViewById(R.id.offer_description);
+        postedDate = view.findViewById(R.id.offer_posted);
     }
 
     public void setView(JobOffer offer){
@@ -41,5 +43,6 @@ public class OffersViewHolder extends RecyclerView.ViewHolder{
         company.setText(offer.getCompany());
         location.setText(offer.getLocation());
         description.setText(offer.getDescription());
+        postedDate.setText(offer.getDatePosted());
     }
 }
