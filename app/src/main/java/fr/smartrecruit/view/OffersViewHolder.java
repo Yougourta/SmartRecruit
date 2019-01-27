@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import fr.smartrecruit.R;
 import fr.smartrecruit.data.JobOffer;
 
@@ -12,7 +14,7 @@ public class OffersViewHolder extends RecyclerView.ViewHolder{
 
     private ImageView image;
     private TextView company;
-    private TextView type;
+    private TextView position;
     private TextView location;
     private TextView description;
 
@@ -22,16 +24,20 @@ public class OffersViewHolder extends RecyclerView.ViewHolder{
     }
 
     private void findViews(View view){
-        image = view.findViewById(R.id.img);
-        company = view.findViewById(R.id.company);
-        type = view.findViewById(R.id.type);
-        location = view.findViewById(R.id.location);
-        description = view.findViewById(R.id.description);
+        image = view.findViewById(R.id.offer_image);
+        company = view.findViewById(R.id.offer_company);
+        position = view.findViewById(R.id.offer_position);
+        location = view.findViewById(R.id.offer_location);
+        description = view.findViewById(R.id.offer_description);
     }
 
     public void setView(JobOffer offer){
-        image.setImageResource(offer.getImg());
-        type.setText(offer.getType());
+        Picasso.get()
+                .load(offer.getImg())
+                .fit()
+                .centerCrop()
+                .into(image);
+        position.setText(offer.getType());
         company.setText(offer.getCompany());
         location.setText(offer.getLocation());
         description.setText(offer.getDescription());
