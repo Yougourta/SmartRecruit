@@ -2,16 +2,18 @@ package fr.smartrecruit.data;
 
 public class JobOffer {
     private String company;
-    private String type;
+    private String position;
     private String location;
     private String description;
-    private int img;
+    private String img;
+    private String datePosted;
 
-    public JobOffer(String company, String type, String location, String description, int img) {
+    public JobOffer(String company, String position, String location, String description, String datePosted, String img) {
         this.company = company;
-        this.type = type;
+        this.position = position;
         this.location = location;
         this.description = description;
+        this.datePosted = datePosted;
         this.img = img;
     }
 
@@ -20,7 +22,7 @@ public class JobOffer {
     }
 
     public String getType() {
-        return type;
+        return position;
     }
 
     public String getLocation() {
@@ -31,7 +33,11 @@ public class JobOffer {
         return description;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
+    }
+
+    public String getDatePosted() {
+        return datePosted;
     }
 }
