@@ -23,7 +23,7 @@ public class JobOffer implements Serializable {
         return company;
     }
 
-    public String getType() {
+    public String getPosition() {
         return position;
     }
 
