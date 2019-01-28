@@ -1,6 +1,7 @@
 package fr.smartrecruit.viewmodel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import java.util.List;
 import fr.smartrecruit.R;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.view.OffersViewHolder;
+import fr.smartrecruit.view.activities.OfferDetailActivity;
 
 /**
  * Created by Yougourta on 22/11/2018.
@@ -38,12 +40,14 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OffersViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OffersViewHolder holder, final int position) {
         holder.setView(offers.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Hello darkness my old friend", Toast.LENGTH_SHORT).show();
+                Intent intentDetail = new Intent(context, OfferDetailActivity.class);
+                intentDetail.putExtra("offer", offers.get(position));
+                context.startActivity(intentDetail);
             }
         });
     }
