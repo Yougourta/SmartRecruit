@@ -2,11 +2,15 @@ package fr.smartrecruit.view.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import fr.smartrecruit.R;
+import fr.smartrecruit.viewmodel.OffersAdapter;
 import fr.smartrecruit.viewmodel.OffersViewModel;
 
 /**
@@ -14,15 +18,44 @@ import fr.smartrecruit.viewmodel.OffersViewModel;
  */
 
 public class OffersFragment extends Fragment {
+    private OffersViewModel offersViewModel = new OffersViewModel();
+    private RecyclerView offersRecycler;
+
     public OffersFragment() {
         // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Ici le traitement specifique a ce qui se passe dans le fragment
         View view = inflater.inflate(R.layout.fragment_offers, container, false);
-        new OffersViewModel().setView(view, getContext());
+        findViews(view);
+        initAdapter();
+        refresh(view);
         return view;
+    }
+
+    public void findViews(View view){
+        offersRecycler = view.findViewById(R.id.listOffers);
+    }
+
+    public void initAdapter(){
+        OffersAdapter offersAdapter = new OffersAdapter(offersViewModel.getRandomOffers(), getContext());
+        offersRecycler.setAdapter(offersAdapter);
+        offersRecycler.setHasFixedSize(true);
+
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        offersRecycler.setLayoutManager(llm);
+    }
+
+    private void refresh(View view){
+
+        final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                offersViewModel.getOffers().add(offersViewModel.createRandomOffer());
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 }
