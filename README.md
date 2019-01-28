@@ -11,11 +11,11 @@
 SmartRecruit is an Android App designed to help you easily get a job using anonymous profiles to focus your application on your skills. 
 
 # Build System
-- [Gradle](https://gradle.org/) :
+-   [Gradle](https://gradle.org/) :
 
 # Pre-requisites
-- [Android Studio](https://developer.android.com/studio/) : Download and install Android Studio then the Android SDK (Tools -> SDK Manager)
-- [Android Emulator](https://developer.android.com/studio/run/managing-avds) : Create a virtual device using AVD Manager (Tools -> AVD Manager -> Create Virtual Device)
+-   [Android Studio](https://developer.android.com/studio/) : Download and install Android Studio then the Android SDK (Tools -> SDK Manager)
+-   [Android Emulator](https://developer.android.com/studio/run/managing-avds) : Create a virtual device using AVD Manager (Tools -> AVD Manager -> Create Virtual Device)
 
 # Launch SmartRecruit
 Clone the repository using Version Control (File -> Project from Version Control -> Git -> [repository_link](https://github.com/Yougourta/SmartRecruit.git) -> OK)
