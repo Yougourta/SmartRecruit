@@ -22,7 +22,7 @@ public class OffersFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Ici le traitement specifique a ce qui se passe dans le fragment
         View view = inflater.inflate(R.layout.fragment_offers, container, false);
-        new OffersViewModel().setView(view, getActivity().getApplicationContext());
+        new OffersViewModel().setView(view, getContext());
         return view;
     }
 }

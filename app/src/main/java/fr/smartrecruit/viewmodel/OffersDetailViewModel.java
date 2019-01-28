@@ -1,7 +1,5 @@
-package fr.smartrecruit.view;
+package fr.smartrecruit.viewmodel;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -9,8 +7,9 @@ import com.squareup.picasso.Picasso;
 
 import fr.smartrecruit.R;
 import fr.smartrecruit.data.JobOffer;
+import fr.smartrecruit.view.activities.OfferDetailActivity;
 
-public class OffersViewHolder extends RecyclerView.ViewHolder{
+public class OffersDetailViewModel{
 
     private ImageView image;
     private TextView company;
@@ -19,18 +18,17 @@ public class OffersViewHolder extends RecyclerView.ViewHolder{
     private TextView description;
     private TextView postedDate;
 
-    public OffersViewHolder(View itemView) {
-        super(itemView);
-        findViews(itemView);
+    public OffersDetailViewModel(OfferDetailActivity view){
+        findViews(view);
     }
 
-    public void findViews(View view){
-        image = view.findViewById(R.id.offer_image);
-        company = view.findViewById(R.id.offer_company);
-        position = view.findViewById(R.id.offer_position);
-        location = view.findViewById(R.id.offer_location);
-        description = view.findViewById(R.id.offer_description);
-        postedDate = view.findViewById(R.id.offer_posted);
+    private void findViews(OfferDetailActivity view){
+        image = view.findViewById(R.id.offer_detail_image);
+        company = view.findViewById(R.id.offer_detail_company);
+        position = view.findViewById(R.id.offer_detail_position);
+        location = view.findViewById(R.id.offer_detail_location);
+        description = view.findViewById(R.id.offer_detail_description);
+        postedDate = view.findViewById(R.id.offer_detail_posted);
     }
 
     public void setView(JobOffer offer){

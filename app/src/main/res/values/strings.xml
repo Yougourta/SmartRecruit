@@ -14,4 +14,5 @@
     <string name="hello_notifications_fragment">Hello notifications fragment</string>
 
     <string name="dummy_text">Lorem Ipsum</string>
+    <string name="title_activity_offer_detail">OfferDetailActivity</string>
 </resources>

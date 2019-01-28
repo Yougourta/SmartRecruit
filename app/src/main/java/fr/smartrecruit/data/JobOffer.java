@@ -1,6 +1,8 @@
 package fr.smartrecruit.data;
 
-public class JobOffer {
+import java.io.Serializable;
+
+public class JobOffer implements Serializable {
     private String company;
     private String position;
     private String location;
