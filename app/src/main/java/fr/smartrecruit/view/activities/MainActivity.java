@@ -17,18 +17,19 @@ import fr.smartrecruit.view.fragments.TipsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    final Fragment offersFm = new OffersFragment();
-    final Fragment applicationsFragmentFm = new ApplicationsFragment();
-    final Fragment tipsFm = new TipsFragment();
-    final Fragment notificationsFm = new NotificationsFragment();
-    final FragmentManager fm = getSupportFragmentManager();
+    private final Fragment offersFm = new OffersFragment();
+    private final Fragment applicationsFragmentFm = new ApplicationsFragment();
+    private final Fragment tipsFm = new TipsFragment();
+    private final Fragment notificationsFm = new NotificationsFragment();
+    private final FragmentManager fm = getSupportFragmentManager();
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
+            int itemId = item.getItemId();
+            switch (itemId) {
                 case R.id.navigation_home:
                     fm.beginTransaction().replace(R.id.frame, offersFm).commit();
                     return true;
