@@ -3,15 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ApplicationsFragment">
+    tools:context=".view.fragments.ApplicationsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/listApplicationFragment"
-        android:layout_width="match_parent"
-        android:layout_height="306dp" />
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_applications_fragment"
+        android:layout_gravity="center_vertical|center_horizontal"/>
 
 </FrameLayout>

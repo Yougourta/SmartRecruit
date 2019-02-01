@@ -1,17 +1,21 @@
 package fr.smartrecruit.data;
 
-public class JobOffer {
+import java.io.Serializable;
+
+public class JobOffer implements Serializable {
     private String company;
-    private String type;
+    private String position;
     private String location;
     private String description;
-    private int img;
+    private String img;
+    private String datePosted;
 
-    public JobOffer(String company, String type, String location, String description, int img) {
+    public JobOffer(String company, String position, String location, String description, String datePosted, String img) {
         this.company = company;
-        this.type = type;
+        this.position = position;
         this.location = location;
         this.description = description;
+        this.datePosted = datePosted;
         this.img = img;
     }
 
@@ -19,39 +23,23 @@ public class JobOffer {
         return company;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
+    public String getPosition() {
+        return position;
     }
 
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
-        this.img = img;
+    public String getDatePosted() {
+        return datePosted;
     }
 }
