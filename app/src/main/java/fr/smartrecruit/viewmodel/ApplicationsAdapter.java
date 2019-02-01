@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -18,27 +17,24 @@ import fr.smartrecruit.R;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.view.activities.OfferDetailActivity;
 
-/**
- * Created by Yougourta on 22/11/2018.
- */
+public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapter.OffersViewHolder> {
 
-public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersViewHolder> {
 
     private List<JobOffer> offers;
     private Context context;
 
-    public OffersAdapter(List<JobOffer> offers, Context context){
+    public ApplicationsAdapter(List<JobOffer> offers, Context context){
         this.offers = offers;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public OffersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public ApplicationsAdapter.OffersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View item = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.offers_row, parent, false);
-        return new OffersViewHolder(item);
+                .inflate(R.layout.applications_row, parent, false);
+        return new ApplicationsAdapter.OffersViewHolder(item);
     }
 
     @Override
@@ -59,22 +55,19 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         return offers.size();
     }
 
-    public static class OffersViewHolder extends RecyclerView.ViewHolder{
-
-        private ImageView image;
+    public class OffersViewHolder  extends RecyclerView.ViewHolder {
         private TextView company;
         private TextView position;
         private TextView location;
         private TextView description;
         private TextView postedDate;
 
-        public OffersViewHolder(View itemView) {
+        public OffersViewHolder(@NonNull View itemView) {
             super(itemView);
             findViews(itemView);
         }
-
         public void findViews(View view){
-            image = view.findViewById(R.id.offer_image);
+
             company = view.findViewById(R.id.offer_company);
             position = view.findViewById(R.id.offer_position);
             location = view.findViewById(R.id.offer_location);
@@ -83,11 +76,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         }
 
         public void setView(JobOffer offer){
-            Picasso.get()
-                    .load(offer.getImg())
-                    .fit()
-                    .centerCrop()
-                    .into(image);
+
             position.setText(offer.getPosition());
             company.setText(offer.getCompany());
             location.setText(offer.getLocation());
