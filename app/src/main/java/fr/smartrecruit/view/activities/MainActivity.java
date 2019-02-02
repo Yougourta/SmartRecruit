@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import fr.smartrecruit.R;
 import fr.smartrecruit.view.fragments.ApplicationsFragment;
+import fr.smartrecruit.view.fragments.AppointmentsFragment;
 import fr.smartrecruit.view.fragments.NotificationsFragment;
 import fr.smartrecruit.view.fragments.OffersFragment;
 import fr.smartrecruit.view.fragments.TipsFragment;
@@ -18,7 +19,8 @@ import fr.smartrecruit.view.fragments.TipsFragment;
 public class MainActivity extends AppCompatActivity {
 
     private final Fragment offersFm = new OffersFragment();
-    private final Fragment applicationsFragmentFm = new ApplicationsFragment();
+    private final Fragment appointmentsFm = new AppointmentsFragment();
+    private final Fragment applicationsFm = new ApplicationsFragment();
     private final Fragment tipsFm = new TipsFragment();
     private final Fragment notificationsFm = new NotificationsFragment();
     private final FragmentManager fm = getSupportFragmentManager();
@@ -34,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
                     fm.beginTransaction().replace(R.id.frame, offersFm).commit();
                     return true;
                 case R.id.navigation_applications:
-                    fm.beginTransaction().replace(R.id.frame, applicationsFragmentFm).commit();
+                    fm.beginTransaction().replace(R.id.frame, applicationsFm).commit();
+                    return true;
+                case R.id.navigation_appointments:
+                    fm.beginTransaction().replace(R.id.frame, appointmentsFm).commit();
                     return true;
                 case R.id.navigation_tips:
                     fm.beginTransaction().replace(R.id.frame, tipsFm).commit();
