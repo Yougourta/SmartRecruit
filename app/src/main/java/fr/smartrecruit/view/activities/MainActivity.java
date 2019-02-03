@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.data.Applicant;
 import fr.smartrecruit.view.fragments.ApplicationsFragment;
 import fr.smartrecruit.view.fragments.AppointmentsFragment;
 import fr.smartrecruit.view.fragments.NotificationsFragment;
