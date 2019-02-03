@@ -24,6 +24,6 @@ public class OffersViewModel {
     public List<JobOffer> getOffers(){ return offers; }
 
     public JobOffer createRandomOffer(){
-        return new JobOffer("Added row", "Added row","Added row", DUMMY_TEXT, DUMMY_POSTED_DATE, "http://www.bluthemes.com/themes/calypso/wp-content/uploads/sites/17/2015/01/101.jpg");
+        return new JobOffer("Random offer", "Random position","Random location", DUMMY_TEXT, DUMMY_POSTED_DATE, "http://www.bluthemes.com/themes/calypso/wp-content/uploads/sites/17/2015/01/101.jpg");
     }
 }

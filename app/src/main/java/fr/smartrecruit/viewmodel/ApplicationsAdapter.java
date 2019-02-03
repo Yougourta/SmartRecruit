@@ -66,10 +66,10 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
             findViews(itemView);
         }
         public void findViews(View view){
-            company = view.findViewById(R.id.offer_company);
-            position = view.findViewById(R.id.offer_position);
-            location = view.findViewById(R.id.offer_location);
-            postedDate = view.findViewById(R.id.offer_posted);
+            company = view.findViewById(R.id.application_company);
+            position = view.findViewById(R.id.application_position);
+            location = view.findViewById(R.id.application_location);
+            postedDate = view.findViewById(R.id.application_posted);
         }
 
         public void setView(JobOffer offer){
