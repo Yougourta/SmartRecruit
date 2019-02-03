@@ -21,9 +21,6 @@ public class OffersFragment extends Fragment {
     private OffersViewModel offersViewModel = new OffersViewModel();
     private RecyclerView offersRecycler;
 
-    public OffersFragment() {
-        // Required empty public constructor
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,7 +45,6 @@ public class OffersFragment extends Fragment {
     }
 
     private void refresh(View view){
-
         final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
