@@ -10,10 +10,6 @@ import fr.smartrecruit.R;
 
 public class TipsFragment extends Fragment {
 
-    public TipsFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

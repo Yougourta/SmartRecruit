@@ -1,9 +1,9 @@
 package fr.smartrecruit.data;
 
 public interface FragmentConstants {
-    public static final int Fragment_Offers = 1001;
-    public static final int Fragment_Applications = 1002;
-    public static final int Fragment_Appointments = 1003;
-    public static final int Fragment_Tips = 1004;
-    public static final int Fragment_Notifications = 1005;
+    int Fragment_Offers = 1001;
+    int Fragment_Applications = 1002;
+    //int Fragment_Appointments = 1003;
+    //int Fragment_Tips = 1004;
+    //int Fragment_Notifications = 1005;
 }

@@ -16,7 +16,8 @@ public class OffersViewModel {
 
     public List<JobOffer> getRandomOffers(){
         JobOffer offer = new JobOffer(DUMMY_COMPANY, DUMMY_POSITION, DUMMY_LOCATION, DUMMY_TEXT, DUMMY_POSTED_DATE, DUMMY_IMAGE);
-        for(int i=0; i<1; i++){ offers.add(offer); }
+        offers.clear();
+        for(int i=0; i<3; i++){ offers.add(offer); }
         return offers;
     }
 

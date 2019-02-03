@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import fr.smartrecruit.R;
+import fr.smartrecruit.data.FragmentConstants;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.view.activities.OfferDetailActivity;
 
@@ -37,7 +38,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     public OffersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View item = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.offers_row, parent, false);
+                .inflate(R.layout.fragment_offers_row, parent, false);
         return new OffersViewHolder(item);
     }
 
@@ -49,6 +50,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             public void onClick(View v) {
                 Intent intentDetail = new Intent(context, OfferDetailActivity.class);
                 intentDetail.putExtra("offer", offers.get(position));
+                intentDetail.putExtra("fragment", FragmentConstants.Fragment_Offers);
                 context.startActivity(intentDetail);
             }
         });

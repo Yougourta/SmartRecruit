@@ -9,22 +9,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 import fr.smartrecruit.R;
+import fr.smartrecruit.data.FragmentConstants;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.view.activities.OfferDetailActivity;
 
 public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapter.OffersViewHolder> {
 
 
-    private List<JobOffer> offers;
+    private List<JobOffer> appliedOffers;
     private Context context;
 
-    public ApplicationsAdapter(List<JobOffer> offers, Context context){
-        this.offers = offers;
+    public ApplicationsAdapter(List<JobOffer> appliedOffers, Context context){
+        this.appliedOffers = appliedOffers;
         this.context = context;
     }
 
@@ -33,18 +32,19 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
     public ApplicationsAdapter.OffersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View item = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.applications_row, parent, false);
+                .inflate(R.layout.fragment_applications_row, parent, false);
         return new ApplicationsAdapter.OffersViewHolder(item);
     }
 
     @Override
     public void onBindViewHolder(@NonNull OffersViewHolder holder, final int position) {
-        holder.setView(offers.get(position));
+        holder.setView(appliedOffers.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentDetail = new Intent(context, OfferDetailActivity.class);
-                intentDetail.putExtra("offer", offers.get(position));
+                intentDetail.putExtra("offer", appliedOffers.get(position));
+                intentDetail.putExtra("fragment", FragmentConstants.Fragment_Applications);
                 context.startActivity(intentDetail);
             }
         });
@@ -52,14 +52,13 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
 
     @Override
     public int getItemCount() {
-        return offers.size();
+        return appliedOffers.size();
     }
 
     public class OffersViewHolder  extends RecyclerView.ViewHolder {
         private TextView company;
         private TextView position;
         private TextView location;
-        private TextView description;
         private TextView postedDate;
 
         public OffersViewHolder(@NonNull View itemView) {
@@ -70,7 +69,6 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
             company = view.findViewById(R.id.offer_company);
             position = view.findViewById(R.id.offer_position);
             location = view.findViewById(R.id.offer_location);
-            description = view.findViewById(R.id.offer_description);
             postedDate = view.findViewById(R.id.offer_posted);
         }
 
@@ -78,7 +76,6 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
             position.setText(offer.getPosition());
             company.setText(offer.getCompany());
             location.setText(offer.getLocation());
-            description.setText(offer.getDescription());
             postedDate.setText(offer.getDatePosted());
         }
     }

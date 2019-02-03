@@ -2,7 +2,6 @@ package fr.smartrecruit.view.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,25 +10,19 @@ import android.view.ViewGroup;
 
 import fr.smartrecruit.R;
 import fr.smartrecruit.viewmodel.ApplicationsAdapter;
-import fr.smartrecruit.viewmodel.OffersAdapter;
-import fr.smartrecruit.viewmodel.OffersViewModel;
+import fr.smartrecruit.viewmodel.ApplicationsViewModel;
 
 /**
  * Code du fragment c'est ici qu'on effectue les traitements concernant chaque fragment sur son affichage
  */
 
 public class ApplicationsFragment extends Fragment {
-    private OffersViewModel offersViewModel = new OffersViewModel();
-    private RecyclerView offersRecycler;
-
-    public ApplicationsFragment() {
-        // Required empty public constructor
-    }
+    private ApplicationsViewModel applicationsViewModel = new ApplicationsViewModel();
+    private RecyclerView applicationsRecycler;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_applications, container, false);
         findViews(view);
         initAdapter();
@@ -38,16 +31,16 @@ public class ApplicationsFragment extends Fragment {
     }
 
     public void findViews(View view) {
-        offersRecycler = view.findViewById(R.id.listOffers);
+        applicationsRecycler = view.findViewById(R.id.listApplications);
     }
 
     public void initAdapter() {
-        ApplicationsAdapter offersAdapter = new ApplicationsAdapter(offersViewModel.getRandomOffers(), getContext());
-        offersRecycler.setAdapter(offersAdapter);
-        offersRecycler.setHasFixedSize(true);
+        ApplicationsAdapter offersAdapter = new ApplicationsAdapter(applicationsViewModel.getAppliedOffers(), getContext());
+        applicationsRecycler.setAdapter(offersAdapter);
+        applicationsRecycler.setHasFixedSize(true);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        offersRecycler.setLayoutManager(llm);
+        applicationsRecycler.setLayoutManager(llm);
     }
 }
 
