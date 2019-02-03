@@ -67,7 +67,6 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
             findViews(itemView);
         }
         public void findViews(View view){
-
             company = view.findViewById(R.id.offer_company);
             position = view.findViewById(R.id.offer_position);
             location = view.findViewById(R.id.offer_location);
@@ -76,7 +75,6 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
         }
 
         public void setView(JobOffer offer){
-
             position.setText(offer.getPosition());
             company.setText(offer.getCompany());
             location.setText(offer.getLocation());
