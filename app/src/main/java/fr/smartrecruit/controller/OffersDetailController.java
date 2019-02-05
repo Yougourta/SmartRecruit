@@ -1,11 +1,11 @@
-package fr.smartrecruit.viewmodel;
+package fr.smartrecruit.controller;
 
 import java.util.List;
 
 import fr.smartrecruit.data.Applicant;
 import fr.smartrecruit.data.JobOffer;
 
-public class OffersDetailViewModel {
+public class OffersDetailController {
 
     public List<JobOffer> getAppliedOffers() {
         return Applicant.getApplicant().getAppliedOffers();

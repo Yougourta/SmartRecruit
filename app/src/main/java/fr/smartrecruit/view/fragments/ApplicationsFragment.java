@@ -9,15 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.viewmodel.ApplicationsAdapter;
-import fr.smartrecruit.viewmodel.ApplicationsViewModel;
+import fr.smartrecruit.controller.ApplicationsAdapter;
+import fr.smartrecruit.controller.ApplicationsController;
 
 /**
  * Code du fragment c'est ici qu'on effectue les traitements concernant chaque fragment sur son affichage
  */
 
 public class ApplicationsFragment extends Fragment {
-    private ApplicationsViewModel applicationsViewModel = new ApplicationsViewModel();
+    private ApplicationsController applicationsController = new ApplicationsController();
     private RecyclerView applicationsRecycler;
 
     @Override
@@ -35,7 +35,7 @@ public class ApplicationsFragment extends Fragment {
     }
 
     public void initAdapter() {
-        ApplicationsAdapter offersAdapter = new ApplicationsAdapter(applicationsViewModel.getAppliedOffers(), getContext());
+        ApplicationsAdapter offersAdapter = new ApplicationsAdapter(applicationsController.getAppliedOffers(), getContext());
         applicationsRecycler.setAdapter(offersAdapter);
         applicationsRecycler.setHasFixedSize(true);
 

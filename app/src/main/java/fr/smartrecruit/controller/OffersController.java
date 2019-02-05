@@ -1,11 +1,11 @@
-package fr.smartrecruit.viewmodel;
+package fr.smartrecruit.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.smartrecruit.data.JobOffer;
 
-public class OffersViewModel {
+public class OffersController {
     private List<JobOffer> offers = new ArrayList();
     private final String DUMMY_TEXT = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
     private final String DUMMY_IMAGE = "https://cdn.pixabay.com/photo/2016/03/28/00/37/flat-1284770_960_720.png";

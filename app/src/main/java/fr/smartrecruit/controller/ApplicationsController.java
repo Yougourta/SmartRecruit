@@ -1,4 +1,4 @@
-package fr.smartrecruit.viewmodel;
+package fr.smartrecruit.controller;
 
 import java.util.HashSet;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Set;
 import fr.smartrecruit.data.Applicant;
 import fr.smartrecruit.data.JobOffer;
 
-public class ApplicationsViewModel {
+public class ApplicationsController {
 
     public List<JobOffer> getAppliedOffers(){
         Set<JobOffer> appliedOffers = new HashSet<>(Applicant.getApplicant().getAppliedOffers());

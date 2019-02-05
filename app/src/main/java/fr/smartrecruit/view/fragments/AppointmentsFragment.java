@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.viewmodel.AppointmentsAdapter;
-import fr.smartrecruit.viewmodel.AppointmentsViewModel;
+import fr.smartrecruit.controller.AppointmentsAdapter;
+import fr.smartrecruit.controller.AppointmentsController;
 
 public class AppointmentsFragment extends Fragment {
-    private AppointmentsViewModel appointmentsViewModel = new AppointmentsViewModel();
+    private AppointmentsController appointmentsController = new AppointmentsController();
     private RecyclerView applicationsRecycler;
 
     @Override
@@ -30,7 +30,7 @@ public class AppointmentsFragment extends Fragment {
     }
 
     public void initAdapter() {
-        AppointmentsAdapter appointmentsAdapter = new AppointmentsAdapter(appointmentsViewModel.getAppointmentsList());
+        AppointmentsAdapter appointmentsAdapter = new AppointmentsAdapter(appointmentsController.getAppointmentsList());
         applicationsRecycler.setAdapter(appointmentsAdapter);
         applicationsRecycler.setHasFixedSize(true);
 

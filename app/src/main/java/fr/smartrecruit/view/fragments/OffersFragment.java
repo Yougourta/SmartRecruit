@@ -10,15 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.viewmodel.OffersAdapter;
-import fr.smartrecruit.viewmodel.OffersViewModel;
+import fr.smartrecruit.controller.OffersAdapter;
+import fr.smartrecruit.controller.OffersController;
 
 /**
  * Code du fragment c'est ici qu'on effectue les traitements concernant chaque fragment sur son affichage
  */
 
 public class OffersFragment extends Fragment {
-    private OffersViewModel offersViewModel = new OffersViewModel();
+    private OffersController offersController = new OffersController();
     private RecyclerView offersRecycler;
 
     @Override
@@ -36,7 +36,7 @@ public class OffersFragment extends Fragment {
     }
 
     public void initAdapter(){
-        OffersAdapter offersAdapter = new OffersAdapter(offersViewModel.getRandomOffers(), getContext());
+        OffersAdapter offersAdapter = new OffersAdapter(offersController.getRandomOffers(), getContext());
         offersRecycler.setAdapter(offersAdapter);
         offersRecycler.setHasFixedSize(true);
 
@@ -49,7 +49,7 @@ public class OffersFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                offersViewModel.getOffers().add(offersViewModel.createRandomOffer());
+                offersController.getOffers().add(offersController.createRandomOffer());
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

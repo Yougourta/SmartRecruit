@@ -15,7 +15,7 @@ import fr.smartrecruit.R;
 import fr.smartrecruit.data.FragmentConstants;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.databinding.ActivityOfferDetailBinding;
-import fr.smartrecruit.viewmodel.OffersDetailViewModel;
+import fr.smartrecruit.controller.OffersDetailController;
 
 public class OfferDetailActivity extends AppCompatActivity{
 
@@ -57,7 +57,7 @@ public class OfferDetailActivity extends AppCompatActivity{
     }
 
     public void apply(View view){
-        new OffersDetailViewModel().addAppliedOffer(offer);
+        new OffersDetailController().addAppliedOffer(offer);
         Toast.makeText(this, "You applied to: "+offer.getPosition(), Toast.LENGTH_SHORT).show();
     }
 
