@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     fm.beginTransaction().replace(R.id.frame, notificationsFm).commit();
                     return true;
+                default:
+                    break;
             }
             return false;
         }
