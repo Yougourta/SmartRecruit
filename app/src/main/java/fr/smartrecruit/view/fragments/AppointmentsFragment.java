@@ -36,5 +36,7 @@ public class AppointmentsFragment extends Fragment {
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         applicationsRecycler.setLayoutManager(llm);
+
+        
     }
 }
