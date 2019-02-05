@@ -13,7 +13,7 @@ import fr.smartrecruit.R;
 import fr.smartrecruit.data.Appointment;
 
 public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapter.AppointmentsViewHolder>{
-    private List<Appointment> appointments;
+    public List<Appointment> appointments;
 
     public AppointmentsAdapter(List<Appointment> appointments){
         this.appointments = appointments;
