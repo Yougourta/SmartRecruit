@@ -28,7 +28,7 @@ public class AppointmentsSwipeController extends Callback{
 
     private AppointmentsSwipeControllerActions buttonsActions = null;
 
-    private static final float buttonWidth = 300;
+    private static final float buttonWidth = 260;
 
     public AppointmentsSwipeController(AppointmentsSwipeControllerActions buttonsActions) {
         this.buttonsActions = buttonsActions;
@@ -83,8 +83,10 @@ public class AppointmentsSwipeController extends Callback{
             public boolean onTouch(View v, MotionEvent event) {
                 swipeBack = event.getAction() == MotionEvent.ACTION_CANCEL || event.getAction() == MotionEvent.ACTION_UP;
                 if (swipeBack) {
-                    if (dX < -buttonWidth) buttonShowedState = ButtonsState.RIGHT_VISIBLE;
-                    else if (dX > buttonWidth) buttonShowedState  = ButtonsState.LEFT_VISIBLE;
+                    if (dX < -buttonWidth)
+                        buttonShowedState = ButtonsState.RIGHT_VISIBLE;
+                    else if (dX > buttonWidth)
+                        buttonShowedState  = ButtonsState.LEFT_VISIBLE;
 
                     if (buttonShowedState != ButtonsState.GONE) {
                         setTouchDownListener(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
@@ -155,12 +157,12 @@ public class AppointmentsSwipeController extends Callback{
         RectF leftButton = new RectF(itemView.getLeft(), itemView.getTop(), itemView.getLeft() + buttonWidthWithoutPadding, itemView.getBottom());
         p.setColor(Color.BLUE);
         c.drawRoundRect(leftButton, corners, corners, p);
-        drawText("EDIT", c, leftButton, p);
+        drawText("ACCEPT", c, leftButton, p);
 
         RectF rightButton = new RectF(itemView.getRight() - buttonWidthWithoutPadding, itemView.getTop(), itemView.getRight(), itemView.getBottom());
         p.setColor(Color.RED);
         c.drawRoundRect(rightButton, corners, corners, p);
-        drawText("DELETE", c, rightButton, p);
+        drawText("REJECT", c, rightButton, p);
 
         buttonInstance = null;
         if (buttonShowedState == ButtonsState.LEFT_VISIBLE) {
@@ -172,7 +174,7 @@ public class AppointmentsSwipeController extends Callback{
     }
 
     private void drawText(String text, Canvas c, RectF button, Paint p) {
-        float textSize = 60;
+        float textSize = 36;
         p.setColor(Color.WHITE);
         p.setAntiAlias(true);
         p.setTextSize(textSize);

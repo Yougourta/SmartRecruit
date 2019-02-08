@@ -50,6 +50,11 @@ public class AppointmentsFragment extends Fragment {
                 appointmentsAdapter.notifyItemRemoved(position);
                 appointmentsAdapter.notifyItemRangeChanged(position, appointmentsAdapter.getItemCount());
             }
+
+            @Override
+            public void onLeftClicked(int position) {
+
+            }
         });
 
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
