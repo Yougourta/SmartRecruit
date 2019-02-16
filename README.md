@@ -11,7 +11,7 @@
 SmartRecruit is an Android App designed to help you easily get a job using anonymous profiles to focus your application on your skills. 
 
 ## Build System
--   [Gradle](https://gradle.org/) :
+-   [Gradle](https://gradle.org/)
 
 ## Pre-requisites
 -   [Android Studio](https://developer.android.com/studio/) : Download and install Android Studio then the Android SDK (Tools -> SDK Manager)
