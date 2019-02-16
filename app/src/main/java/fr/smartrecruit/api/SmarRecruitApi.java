@@ -1,7 +1,7 @@
 package fr.smartrecruit.api;
 
 import android.content.Context;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,7 +20,7 @@ import fr.smartrecruit.data.JobOffer;
 
 public class SmarRecruitApi {
 
-    private final String SERVER_URL = "http://127.0.0.1:5000";
+    private final String SERVER_URL = "http://192.168.1.81:5000";
 
     private Context context;
     private List<JobOffer> offers = new ArrayList();
@@ -47,7 +47,7 @@ public class SmarRecruitApi {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(context, volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("Error", volleyError.getMessage());
             }
         });
         queue.add(request);
@@ -62,8 +62,8 @@ public class SmarRecruitApi {
         jobOffer.setId(jsonObject.get("id").getAsString());
         jobOffer.setPosition(jsonObject.get("position").getAsString());
         jobOffer.setCompany(jsonObject.get("company").getAsString());
-        jobOffer.setLocation(jsonObject.get("company").getAsString());
-        jobOffer.setDatePosted(jsonObject.get("company").getAsString());
+        jobOffer.setLocation(jsonObject.get("location").getAsString());
+        jobOffer.setDatePosted(jsonObject.get("datePosted").getAsString());
         jobOffer.setContract(jsonObject.get("contract").getAsString());
         jobOffer.setDescription(jsonObject.get("description").getAsString());
         jobOffer.setImg(jsonObject.get("img").getAsString());
