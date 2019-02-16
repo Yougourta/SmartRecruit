@@ -20,6 +20,7 @@ import fr.smartrecruit.controller.OffersController;
 public class OffersFragment extends Fragment {
     private OffersController offersController = new OffersController();
     private RecyclerView offersRecycler;
+    private OffersAdapter offersAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,7 +37,7 @@ public class OffersFragment extends Fragment {
     }
 
     public void initAdapter(){
-        OffersAdapter offersAdapter = new OffersAdapter(offersController.getRandomOffers(), getContext());
+        offersAdapter = new OffersAdapter(offersController.getApiOffers(getContext()), getContext());
         offersRecycler.setAdapter(offersAdapter);
         offersRecycler.setHasFixedSize(true);
 
@@ -49,7 +50,8 @@ public class OffersFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                offersController.getOffers().add(offersController.createRandomOffer());
+                offersController.refreshApiOffers();
+                offersAdapter.notifyDataSetChanged();
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

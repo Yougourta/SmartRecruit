@@ -23,14 +23,14 @@ public class SmarRecruitApi {
     private final String SERVER_URL = "http://127.0.0.1:5000";
 
     private Context context;
-    private List<JobOffer> offers;
+    private List<JobOffer> offers = new ArrayList();
 
     public SmarRecruitApi(Context context){
         this.context = context;
     }
 
     public void requestOffers(){
-        offers = new ArrayList();
+        offers.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
         final String url = SERVER_URL+"/offers";
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
