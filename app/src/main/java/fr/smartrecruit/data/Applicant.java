@@ -43,4 +43,13 @@ public class Applicant {
     public List<JobOffer> getAppliedOffers() {
         return appliedOffers;
     }
+
+    public void setAppliedOffers(List<JobOffer> appliedOffers){
+        this.appliedOffers.clear();
+        this.appliedOffers.addAll(appliedOffers);
+    }
+
+    public void addAppliedOffer(JobOffer newOffer){
+        this.appliedOffers.add(newOffer);
+    }
 }
