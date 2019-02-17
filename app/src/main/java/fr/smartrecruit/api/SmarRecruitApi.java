@@ -16,6 +16,7 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.smartrecruit.data.Applicant;
 import fr.smartrecruit.data.JobOffer;
 
 public class SmarRecruitApi {
@@ -51,6 +52,10 @@ public class SmarRecruitApi {
             }
         });
         queue.add(request);
+    }
+
+    public void postApplication(JobOffer offer, Applicant applicant){
+
     }
 
     public List<JobOffer> getOffers(){

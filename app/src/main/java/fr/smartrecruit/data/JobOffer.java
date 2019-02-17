@@ -86,4 +86,8 @@ public class JobOffer implements Serializable {
     public void setDatePosted(String datePosted) {
         this.datePosted = datePosted;
     }
+
+    public boolean equals(JobOffer offer) {
+        return this.id.equals(offer.getId());
+    }
 }
