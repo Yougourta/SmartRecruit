@@ -17,6 +17,7 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.smartrecruit.controller.ApplicationsAdapter;
 import fr.smartrecruit.controller.OffersAdapter;
 import fr.smartrecruit.data.Applicant;
 import fr.smartrecruit.data.DataConstants;
@@ -28,8 +29,10 @@ public class SmarRecruitApi {
 
     private Context context;
     private List<JobOffer> offers = new ArrayList();
+    private List<JobOffer> applications = new ArrayList();
 
-    private OffersAdapter adapter;
+    private OffersAdapter offersAdapter;
+    private ApplicationsAdapter applicationsAdapter;
 
     public SmarRecruitApi(Context context){
         this.context = context;
@@ -49,7 +52,31 @@ public class SmarRecruitApi {
                     JobOffer jobOffer = getJobOffer(jsonObject);
                     offers.add(jobOffer);
                 }
-                adapter.notifyDataSetChanged();
+                offersAdapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.d("Error", volleyError.getMessage());
+            }
+        });
+        queue.add(request);
+    }
+
+    public void requestApplicantApplications(){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        final String url = DataConstants.SERVER_URL+"/applications?applicant="+Applicant.getApplicant().getId();
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                JsonParser parser = new JsonParser();
+                JsonArray resultsJsonObject = parser.parse(s).getAsJsonObject().get("job-applications").getAsJsonArray();
+                for (int i=0; i<resultsJsonObject.size(); i++){
+                    JsonObject jsonObject = resultsJsonObject.get(i).getAsJsonObject();
+                    JobOffer jobOffer = getJobOffer(jsonObject);
+                    applications.add(jobOffer);
+                }
+                applicationsAdapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -62,7 +89,7 @@ public class SmarRecruitApi {
 
     public void applyToOffer(JobOffer offer, Applicant applicant){
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL +"/application?applicant="+USER_ID+"&appid="+offer.getId();
+        final String url = DataConstants.SERVER_URL +"/apply?applicant="+USER_ID+"&appid="+offer.getId();
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -86,6 +113,10 @@ public class SmarRecruitApi {
         return this.offers;
     }
 
+    public List<JobOffer> getApplications(){
+        return this.applications;
+    }
+
     public JobOffer getJobOffer(JsonObject jsonObject){
         JobOffer jobOffer = new JobOffer();
         jobOffer.setId(jsonObject.get("id").getAsString());
@@ -100,6 +131,10 @@ public class SmarRecruitApi {
     }
 
     public void setApiAdapter(OffersAdapter adapter){
-        this.adapter = adapter;
+        this.offersAdapter = adapter;
+    }
+
+    public void setApiAdapter(ApplicationsAdapter adapter){
+        this.applicationsAdapter = adapter;
     }
 }

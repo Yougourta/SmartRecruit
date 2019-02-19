@@ -9,6 +9,7 @@ import fr.smartrecruit.data.JobOffer;
 public class OffersController {
 
     private static OffersController offersController;
+    private SmarRecruitApi api;
 
     private OffersController() { }
 
@@ -17,8 +18,6 @@ public class OffersController {
             offersController = new OffersController();
         return offersController;
     }
-
-    private SmarRecruitApi api;
 
     public List<JobOffer> getApiOffers(Context context){
         api = new SmarRecruitApi(context);
