@@ -21,12 +21,11 @@ import fr.smartrecruit.controller.OffersController;
 public class OffersFragment extends Fragment {
     private RecyclerView offersRecycler;
     private OffersAdapter offersAdapter;
-    private View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_offers, container, false);
+        View view = inflater.inflate(R.layout.fragment_offers, container, false);
         findViews(view);
         initAdapter();
         refresh(view);

@@ -95,9 +95,9 @@ public class SmarRecruitApi {
             public void onResponse(String s) {
                 JsonParser parser = new JsonParser();
                 String response = parser.parse(s).getAsJsonObject().get("response").getAsString();
-                if (response.equals("success"))
+                if ("success".equals(response))
                     Toast.makeText(context, "Application Sent !", Toast.LENGTH_SHORT).show();
-                else if (response.equals("error"))
+                else if ("error".equals(response))
                     Toast.makeText(context, "An error occurred x(", Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
