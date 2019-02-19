@@ -21,11 +21,12 @@ public class OffersFragment extends Fragment {
     private OffersController offersController = new OffersController();
     private RecyclerView offersRecycler;
     private OffersAdapter offersAdapter;
+    private View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_offers, container, false);
+        view = inflater.inflate(R.layout.fragment_offers, container, false);
         findViews(view);
         initAdapter();
         refresh(view);

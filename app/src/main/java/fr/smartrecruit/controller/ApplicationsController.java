@@ -15,8 +15,4 @@ public class ApplicationsController {
         Applicant.getApplicant().getAppliedOffers().addAll(appliedOffers);
         return Applicant.getApplicant().getAppliedOffers();
     }
-
-    public void addAppliedOffer(JobOffer offer){
-        Applicant.getApplicant().getAppliedOffers().add(offer);
-    }
 }

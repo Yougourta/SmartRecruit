@@ -20,7 +20,7 @@ public class Applicant {
 
     public static Applicant getApplicant(){
         if(applicant==null)
-            applicant = new Applicant("usr29183", "SmartRecruit", "has-1234", new ArrayList<JobOffer>());
+            applicant = new Applicant("1", "SmartRecruit", "has-1234", new ArrayList<JobOffer>());
         return  applicant;
     }
 

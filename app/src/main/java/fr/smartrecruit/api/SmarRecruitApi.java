@@ -2,6 +2,7 @@ package fr.smartrecruit.api;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,6 +23,7 @@ import fr.smartrecruit.data.JobOffer;
 public class SmarRecruitApi {
 
     private final String SERVER_URL = "http://192.168.1.81:5000";
+    private final String USER_ID = Applicant.getApplicant().getId();
 
     private Context context;
     private List<JobOffer> offers = new ArrayList();
@@ -54,8 +56,26 @@ public class SmarRecruitApi {
         queue.add(request);
     }
 
-    public void postApplication(JobOffer offer, Applicant applicant){
-
+    public void applyToOffer(JobOffer offer, Applicant applicant){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        final String url = SERVER_URL+"/application?applicant="+USER_ID+"&appid="+offer.getId();
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                JsonParser parser = new JsonParser();
+                String response = parser.parse(s).getAsJsonObject().get("response").getAsString();
+                if (response.equals("success"))
+                    Toast.makeText(context, "Application Sent !", Toast.LENGTH_SHORT).show();
+                else if (response.equals("error"))
+                    Toast.makeText(context, "An error occurred x(", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.d("Error", volleyError.getMessage());
+            }
+        });
+        queue.add(request);
     }
 
     public List<JobOffer> getOffers(){
