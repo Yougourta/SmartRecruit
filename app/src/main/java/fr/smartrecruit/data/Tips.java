@@ -1,6 +1,8 @@
 package fr.smartrecruit.data;
 
-public class Tips  {
+import java.io.Serializable;
+
+public class Tips  implements Serializable {
     private String conseil;
     private String type;
 

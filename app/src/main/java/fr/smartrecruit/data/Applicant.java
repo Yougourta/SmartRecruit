@@ -26,4 +26,5 @@ public class Applicant {
     public List<JobOffer> getAppliedOffers() {
         return appliedOffers;
     }
+
 }

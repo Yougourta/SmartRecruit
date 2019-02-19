@@ -13,5 +13,4 @@ public class TipsDetailViewModel {
 
     public void addAppliedTips(Tips tips){
         Applicant.getApplicant().getAppliedOffers().add(tips);
-    }
-*/}
+    }*/}

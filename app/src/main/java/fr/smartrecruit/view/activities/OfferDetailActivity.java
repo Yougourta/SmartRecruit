@@ -31,17 +31,7 @@ public class OfferDetailActivity extends AppCompatActivity{
         binding.setOffer(offer);
 
         Button apply = findViewById(R.id.offer_detail_apply);
-        switch (getIntent().getIntExtra("fragment", 0)){
-            case FragmentConstants.Fragment_Offers:
-                apply.setVisibility(View.VISIBLE);
-                break;
-            case FragmentConstants.Fragment_Applications:
-                apply.setVisibility(View.GONE);
-                break;
-            default:
-                break;
 
-        }
 
         ImageView image = findViewById(R.id.offer_detail_image);
         Picasso.get()

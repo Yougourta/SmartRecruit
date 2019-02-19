@@ -1,6 +1,7 @@
 package fr.smartrecruit.viewmodel;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import java.util.List;
 import fr.smartrecruit.R;
 import fr.smartrecruit.data.FragmentConstants;
 import fr.smartrecruit.data.Tips;
+import fr.smartrecruit.view.activities.OfferDetailActivity;
 import fr.smartrecruit.view.activities.TipsDetailActivity;
 
 public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.TipsViewHolder> {
@@ -39,7 +41,18 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.TipsViewHolder
 
    @Override
     public void onBindViewHolder(@NonNull TipsViewHolder holder, final int position) {
-       ;
+        holder.setView(tips.get(position));
+       holder.itemView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intentDetail = new Intent(context, TipsDetailActivity.class);
+
+              intentDetail.putExtra("tips", tips.get(position));
+              intentDetail.putExtra("fragment", FragmentConstants.Fragment_Tips);
+              context.startActivity(intentDetail);
+           }
+       });
+
     }
 
     @Override

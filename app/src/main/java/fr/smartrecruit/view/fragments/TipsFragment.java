@@ -29,7 +29,7 @@ public class TipsFragment extends Fragment {
             View view = inflater.inflate(R.layout.fragment_tips, container, false);
             findViews(view);
             initAdapter();
-            refresh(view);
+
             return view;
         }
 
@@ -38,6 +38,8 @@ public class TipsFragment extends Fragment {
         }
 
         public void initAdapter() {
+
+
             TipsAdapter tipsAdapter = new TipsAdapter(tipsViewModel.getTips(), getContext());
             tipsRecycler.setAdapter(tipsAdapter);
             tipsRecycler.setHasFixedSize(true);
@@ -46,16 +48,7 @@ public class TipsFragment extends Fragment {
             tipsRecycler.setLayoutManager(llm);
         }
 
-        private void refresh(View view) {
-            final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh);
-            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    tipsViewModel.getTips().add(tipsViewModel.createRandomTips());
-                    swipeRefreshLayout.setRefreshing(false);
-                }
-            });
-        }
+
 
 
     }

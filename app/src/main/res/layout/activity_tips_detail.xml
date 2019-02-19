@@ -11,47 +11,7 @@
             type="fr.smartrecruit.data.Tips"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.activities.TipsDetailActivity">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
-        </android.support.design.widget.AppBarLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/tips_detail_constraint"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="56dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBar">
-
-            <android.support.v4.widget.NestedScrollView
-                android:id="@+id/scroll_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
@@ -62,29 +22,51 @@
 
                     <TextView
                         android:id="@+id/tips_detail_text1"
-                        android:layout_width="181dp"
-                        android:layout_height="38dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
                         android:text=" conseil"
                         android:textColor="#ACACAC"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:layout_editor_absoluteY="43dp" />
+                        app:layout_constraintTop_toBottomOf="@+id/tips_detail_conseil" />
 
                     <TextView
-                        android:id="@+id/tips_detail_type"
+                        android:id="@+id/tips_detail_conseil"
                         android:layout_width="0dp"
-                        android:layout_height="288dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:text="@{tips.type}"
+                        android:text="@{tips.conseil}"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tips_detail_text1" />
 
-                </android.support.constraint.ConstraintLayout>
-            </android.support.v4.widget.NestedScrollView>
+                    <TextView
+                        android:id="@+id/offer_detail_text2"
+                        android:layout_width="117dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="64dp"
+                        android:text="Type"
+                        android:textColor="#ACACAC"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tips_detail_text1" />
 
-        </android.support.constraint.ConstraintLayout>
-    </android.support.constraint.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/tips_detail_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@{tips.type}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tips_detail_text2" />
+
+                </android.support.constraint.ConstraintLayout>
+
+
+
+
 </layout>

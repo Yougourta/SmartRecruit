@@ -8,11 +8,17 @@ public class TipsViewModel {
     private final String DUMMY_CONSEIL = "conseil #";
     private final String DUMMY_TYPE = "Type #";
 
-
     public List<Tips> getTips()
-    { return tips; }
+    {
+        Tips tips1 = new Tips(DUMMY_CONSEIL, DUMMY_TYPE);
+        Tips tips2 = new Tips(DUMMY_CONSEIL, DUMMY_TYPE);
+        Tips tips3 = new Tips(DUMMY_CONSEIL, DUMMY_TYPE);
+        tips.add(tips1);
+        tips.add(tips2);
+        tips.add(tips3);
 
-    public Tips createRandomTips(){
-        return new Tips("Random tips", DUMMY_TYPE);
+        return tips;
+
     }
+
 }
