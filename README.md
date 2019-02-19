@@ -15,8 +15,11 @@ SmartRecruit is an Android App designed to help you easily get a job using anony
 
 ## Third party libraries
 -   [Volley](https://developer.android.com/training/volley/)
--   [Picasso](http://square.github.io/picasso/)
 -   [Gson](https://github.com/google/gson)
+-   [Picasso](http://square.github.io/picasso/)
+
+## APIs
+-   [SmartRecruitAPI](https://github.com/KarimFatimazahrae/SmartRecruit-Backend.git)
 
 ## Pre-requisites
 -   [Android Studio](https://developer.android.com/studio/) : Download and install Android Studio then the Android SDK (Tools -> SDK Manager)
