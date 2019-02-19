@@ -17,16 +17,19 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.smartrecruit.controller.OffersAdapter;
 import fr.smartrecruit.data.Applicant;
+import fr.smartrecruit.data.DataConstants;
 import fr.smartrecruit.data.JobOffer;
 
 public class SmarRecruitApi {
 
-    private final String SERVER_URL = "http://192.168.1.81:5000";
     private final String USER_ID = Applicant.getApplicant().getId();
 
     private Context context;
     private List<JobOffer> offers = new ArrayList();
+
+    private OffersAdapter adapter;
 
     public SmarRecruitApi(Context context){
         this.context = context;
@@ -35,7 +38,7 @@ public class SmarRecruitApi {
     public void requestOffers(){
         offers.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = SERVER_URL+"/offers";
+        final String url = DataConstants.SERVER_URL+"/offers";
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -46,6 +49,7 @@ public class SmarRecruitApi {
                     JobOffer jobOffer = getJobOffer(jsonObject);
                     offers.add(jobOffer);
                 }
+                adapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -58,7 +62,7 @@ public class SmarRecruitApi {
 
     public void applyToOffer(JobOffer offer, Applicant applicant){
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = SERVER_URL+"/application?applicant="+USER_ID+"&appid="+offer.getId();
+        final String url = DataConstants.SERVER_URL +"/application?applicant="+USER_ID+"&appid="+offer.getId();
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -93,5 +97,9 @@ public class SmarRecruitApi {
         jobOffer.setDescription(jsonObject.get("description").getAsString());
         jobOffer.setImg(jsonObject.get("img").getAsString());
         return jobOffer;
+    }
+
+    public void setApiAdapter(OffersAdapter adapter){
+        this.adapter = adapter;
     }
 }

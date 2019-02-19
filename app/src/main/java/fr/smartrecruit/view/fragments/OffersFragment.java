@@ -1,5 +1,6 @@
 package fr.smartrecruit.view.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -18,7 +19,6 @@ import fr.smartrecruit.controller.OffersController;
  */
 
 public class OffersFragment extends Fragment {
-    private OffersController offersController = new OffersController();
     private RecyclerView offersRecycler;
     private OffersAdapter offersAdapter;
     private View view;
@@ -38,9 +38,12 @@ public class OffersFragment extends Fragment {
     }
 
     public void initAdapter(){
-        offersAdapter = new OffersAdapter(offersController.getApiOffers(getContext()), getContext());
+        final Context context = getContext();
+        offersAdapter = new OffersAdapter(OffersController.getOfferController().getApiOffers(context), context);
         offersRecycler.setAdapter(offersAdapter);
         offersRecycler.setHasFixedSize(true);
+
+        OffersController.getOfferController().setApiAdapter(offersAdapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         offersRecycler.setLayoutManager(llm);
@@ -51,7 +54,7 @@ public class OffersFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                offersController.refreshApiOffers();
+                OffersController.getOfferController().refreshApiOffers();
                 offersAdapter.notifyDataSetChanged();
                 swipeRefreshLayout.setRefreshing(false);
             }
