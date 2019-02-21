@@ -1,5 +1,6 @@
 package fr.smartrecruit.view.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +18,6 @@ import fr.smartrecruit.controller.ApplicationsController;
  */
 
 public class ApplicationsFragment extends Fragment {
-    private ApplicationsController applicationsController = new ApplicationsController();
     private RecyclerView applicationsRecycler;
 
     @Override
@@ -27,7 +27,6 @@ public class ApplicationsFragment extends Fragment {
         findViews(view);
         initAdapter();
         return view;
-
     }
 
     public void findViews(View view) {
@@ -35,9 +34,12 @@ public class ApplicationsFragment extends Fragment {
     }
 
     public void initAdapter() {
-        ApplicationsAdapter offersAdapter = new ApplicationsAdapter(applicationsController.getAppliedOffers(), getContext());
+        final Context context = getContext();
+        ApplicationsAdapter offersAdapter = new ApplicationsAdapter(ApplicationsController.getApplicationsController().getAppliedOffers(context), context);
         applicationsRecycler.setAdapter(offersAdapter);
         applicationsRecycler.setHasFixedSize(true);
+
+        ApplicationsController.getApplicationsController().setApiAdapter(offersAdapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         applicationsRecycler.setLayoutManager(llm);

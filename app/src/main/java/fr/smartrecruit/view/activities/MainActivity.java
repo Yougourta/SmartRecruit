@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //On simule qu'on a un notre utilisateur connecte
+        //Applicant.getApplicant()
+
         //Sert a afficher le bottom navigation view, celui qui sert a acceder aux fonctionnalites
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

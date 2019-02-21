@@ -3,12 +3,16 @@ package fr.smartrecruit.data;
 import java.io.Serializable;
 
 public class JobOffer implements Serializable {
+    private String id;
     private String company;
     private String position;
     private String location;
+    private String contract;
     private String description;
     private String img;
     private String datePosted;
+
+    public JobOffer(){}
 
     public JobOffer(String company, String position, String location, String description, String datePosted, String img) {
         this.company = company;
@@ -17,6 +21,10 @@ public class JobOffer implements Serializable {
         this.description = description;
         this.datePosted = datePosted;
         this.img = img;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getCompany() {
@@ -31,6 +39,10 @@ public class JobOffer implements Serializable {
         return location;
     }
 
+    public String getContract() {
+        return contract;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -41,5 +53,41 @@ public class JobOffer implements Serializable {
 
     public String getDatePosted() {
         return datePosted;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setContract(String contract) {
+        this.contract = contract;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public void setDatePosted(String datePosted) {
+        this.datePosted = datePosted;
+    }
+
+    public boolean equals(JobOffer offer) {
+        return this.id.equals(offer.getId());
     }
 }

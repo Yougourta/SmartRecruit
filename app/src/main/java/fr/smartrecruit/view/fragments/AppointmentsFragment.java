@@ -30,7 +30,7 @@ public class AppointmentsFragment extends Fragment {
     }
 
     public void initAdapter() {
-        AppointmentsAdapter appointmentsAdapter = new AppointmentsAdapter(appointmentsController.getAppointmentsList());
+        AppointmentsAdapter appointmentsAdapter = new AppointmentsAdapter(null);
         applicationsRecycler.setAdapter(appointmentsAdapter);
         applicationsRecycler.setHasFixedSize(true);
 
