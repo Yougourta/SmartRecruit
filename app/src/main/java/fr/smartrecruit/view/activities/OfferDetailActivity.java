@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
-
 import fr.smartrecruit.R;
 import fr.smartrecruit.controller.OffersDetailController;
 import fr.smartrecruit.data.FragmentConstants;
@@ -43,11 +41,12 @@ public class OfferDetailActivity extends AppCompatActivity{
         }
 
         ImageView image = findViewById(R.id.offer_detail_image);
-        Picasso.get()
+
+        /*Picasso.get()
                 .load(offer.getImg())
                 .fit()
                 .centerCrop()
-                .into(image);
+                .into(image);*/
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

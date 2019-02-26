@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 import fr.smartrecruit.R;
@@ -85,16 +83,18 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         }
 
         public void setView(JobOffer offer){
-            Picasso.get()
+            /*Picasso.get()
                     .load(offer.getImg())
                     .fit()
                     .centerCrop()
-                    .into(image);
+                    .into(image);*/
             position.setText(offer.getPosition());
             company.setText(offer.getCompany());
             location.setText(offer.getLocation());
             description.setText(offer.getDescription());
-            postedDate.setText(offer.getDatePosted());
+
+            // To review code quality
+            postedDate.setText(R.string.text_posted+offer.getDatePosted());
         }
     }
 }
