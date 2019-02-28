@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -26,6 +27,9 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
 
     private List<JobOffer> offers;
     private Context context;
+
+    private JobOffer mRecentlyDeletedItem;
+    private int mRecentlyDeletedItemPosition;
 
     public OffersAdapter(List<JobOffer> offers, Context context){
         this.offers = offers;
@@ -99,7 +103,16 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             location.setText(offer.getLocation());
             description.setText(offer.getDescription());
 
-            postedDate.setText(context.getResources().getString(R.string.text_posted, offer.getDatePosted()));
+            postedDate.setText(offer.getDatePosted());
         }
+    }
+
+    public void removeItem(int position){
+        mRecentlyDeletedItem = offers.get(position);
+        mRecentlyDeletedItemPosition = position;
+        offers.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
+        Toast.makeText(context, "Offer "+mRecentlyDeletedItem.getId()+" deleted", Toast.LENGTH_SHORT).show();
     }
 }

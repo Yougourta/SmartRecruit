@@ -62,7 +62,12 @@ public class OffersFragment extends Fragment {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                // Take action for the swiped item
+                int position = viewHolder.getAdapterPosition();
+                if (direction == ItemTouchHelper.LEFT){
+                    offersAdapter.removeItem(position);
+                }else if(direction == ItemTouchHelper.RIGHT){
+                    offersAdapter.removeItem(position);//ajouter aux favoris
+                }
             }
 
             @Override
