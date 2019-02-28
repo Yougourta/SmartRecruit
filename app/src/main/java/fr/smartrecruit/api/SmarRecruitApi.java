@@ -41,7 +41,7 @@ public class SmarRecruitApi {
     public void requestOffers(){
         offers.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL+"/offers";
+        final String url = DataConstants.SERVER_URL+"/offers?applicant="+Applicant.getApplicant().getId();
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -127,6 +127,7 @@ public class SmarRecruitApi {
         jobOffer.setContract(jsonObject.get("contract").getAsString());
         jobOffer.setDescription(jsonObject.get("description").getAsString());
         jobOffer.setImg(jsonObject.get("img").getAsString());
+        jobOffer.setInterest(jsonObject.get("interested").getAsString());
         return jobOffer;
     }
 

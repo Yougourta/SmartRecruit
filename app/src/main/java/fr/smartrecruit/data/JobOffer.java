@@ -11,6 +11,7 @@ public class JobOffer implements Serializable {
     private String description;
     private String img;
     private String datePosted;
+    private String interest;
 
     public JobOffer(){}
 
@@ -89,5 +90,13 @@ public class JobOffer implements Serializable {
 
     public boolean equals(JobOffer offer) {
         return this.id.equals(offer.getId());
+    }
+
+    public String getInterest() {
+        return interest;
+    }
+
+    public void setInterest(String interest) {
+        this.interest = interest;
     }
 }
