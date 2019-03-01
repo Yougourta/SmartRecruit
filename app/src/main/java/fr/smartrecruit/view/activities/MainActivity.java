@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private final Fragment offersFm = new OffersFragment();
     private final Fragment appointmentsFm = new AppointmentsFragment();
     private final Fragment applicationsFm = new ApplicationsFragment();
-    private final Fragment tipsFm = new TipsFragment();
+    private final Fragment favoriteFm = new TipsFragment();
     private final Fragment notificationsFm = new NotificationsFragment();
     private final FragmentManager fm = getSupportFragmentManager();
 
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_appointments:
                     fm.beginTransaction().replace(R.id.frame, appointmentsFm).commit();
                     return true;
-                case R.id.navigation_tips:
-                    fm.beginTransaction().replace(R.id.frame, tipsFm).commit();
+                case R.id.navigation_favorite:
+                    fm.beginTransaction().replace(R.id.frame, favoriteFm).commit();
                     return true;
                 case R.id.navigation_notifications:
                     fm.beginTransaction().replace(R.id.frame, notificationsFm).commit();

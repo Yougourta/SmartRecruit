@@ -16,9 +16,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import fr.smartrecruit.R;
+import fr.smartrecruit.api.SmarRecruitApi;
 import fr.smartrecruit.controller.OffersAdapter;
 import fr.smartrecruit.controller.OffersController;
+import fr.smartrecruit.data.DataConstants;
+import fr.smartrecruit.data.JobOffer;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 /**
@@ -28,6 +33,7 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 public class OffersFragment extends Fragment {
     private RecyclerView offersRecycler;
     private OffersAdapter offersAdapter;
+    private List<JobOffer> offers;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,7 +51,8 @@ public class OffersFragment extends Fragment {
 
     public void initAdapter(){
         final Context context = getContext();
-        offersAdapter = new OffersAdapter(OffersController.getOfferController().getApiOffers(context), context);
+        offers = OffersController.getOfferController().getApiOffers(context);
+        offersAdapter = new OffersAdapter(offers, context);
         offersRecycler.setAdapter(offersAdapter);
         offersRecycler.setHasFixedSize(true);
         OffersController.getOfferController().setApiAdapter(offersAdapter);
@@ -64,9 +71,11 @@ public class OffersFragment extends Fragment {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
                 if (direction == ItemTouchHelper.LEFT){
+                    new SmarRecruitApi(context).updateFavorites(offers.get(position), DataConstants.DELETED);
                     offersAdapter.removeItem(position);
                 }else if(direction == ItemTouchHelper.RIGHT){
-                    offersAdapter.removeItem(position);//ajouter aux favoris
+                    new SmarRecruitApi(context).updateFavorites(offers.get(position), DataConstants.INTERESTED);
+                    offersAdapter.removeItem(position);
                 }
             }
 

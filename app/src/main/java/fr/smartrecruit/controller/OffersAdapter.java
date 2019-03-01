@@ -2,7 +2,6 @@ package fr.smartrecruit.controller;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -67,7 +65,6 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     public static class OffersViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView image;
-        private ImageView interest;
         private TextView company;
         private TextView position;
         private TextView location;
@@ -80,7 +77,6 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         }
 
         public void findViews(View view){
-            interest = view.findViewById(R.id.offer_status);
             image = view.findViewById(R.id.offer_image);
             company = view.findViewById(R.id.offer_company);
             position = view.findViewById(R.id.offer_position);
@@ -95,14 +91,10 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                     .fit()
                     .centerCrop()
                     .into(image);*/
-            if ("true".equals(offer.getInterest())){
-                interest.setColorFilter(Color.parseColor("#10BC8E"));
-            }
             position.setText(offer.getPosition());
             company.setText(offer.getCompany());
             location.setText(offer.getLocation());
             description.setText(offer.getDescription());
-
             postedDate.setText(offer.getDatePosted());
         }
     }
@@ -113,6 +105,5 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         offers.remove(position);
         notifyItemRemoved(position);
         notifyDataSetChanged();
-        Toast.makeText(context, "Offer "+mRecentlyDeletedItem.getId()+" deleted", Toast.LENGTH_SHORT).show();
     }
 }

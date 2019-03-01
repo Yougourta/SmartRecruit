@@ -5,6 +5,7 @@
     <string name="title_activity_offers">OffersActivity</string>
 
     <string name="title_home">Accueil</string>
+    <string name="title_favorite">Favoris</string>
     <string name="title_applications">Jobs</string>
     <string name="title_appointments">Rendez-vous</string>
     <string name="title_tips">Astuces</string>
