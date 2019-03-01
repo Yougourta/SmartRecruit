@@ -32,6 +32,9 @@ public class OfferDetailActivity extends AppCompatActivity{
             case FragmentConstants.Fragment_Offers:
                 apply.setVisibility(View.VISIBLE);
                 break;
+            case FragmentConstants.Fragment_Favorites:
+                apply.setVisibility(View.VISIBLE);
+                break;
             case FragmentConstants.Fragment_Applications:
                 apply.setVisibility(View.GONE);
                 break;

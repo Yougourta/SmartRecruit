@@ -14,14 +14,14 @@ import fr.smartrecruit.view.fragments.ApplicationsFragment;
 import fr.smartrecruit.view.fragments.AppointmentsFragment;
 import fr.smartrecruit.view.fragments.NotificationsFragment;
 import fr.smartrecruit.view.fragments.OffersFragment;
-import fr.smartrecruit.view.fragments.TipsFragment;
+import fr.smartrecruit.view.fragments.FavoritesFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private final Fragment offersFm = new OffersFragment();
     private final Fragment appointmentsFm = new AppointmentsFragment();
     private final Fragment applicationsFm = new ApplicationsFragment();
-    private final Fragment favoriteFm = new TipsFragment();
+    private final Fragment favoriteFm = new FavoritesFragment();
     private final Fragment notificationsFm = new NotificationsFragment();
     private final FragmentManager fm = getSupportFragmentManager();
 
