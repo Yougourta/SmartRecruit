@@ -29,4 +29,8 @@ public class ApplicationsController {
     public void setApiAdapter(ApplicationsAdapter adapter){
         api.setApiAdapter(adapter);
     }
+
+    public void refreshApplications(){
+        api.requestApplications();
+    }
 }

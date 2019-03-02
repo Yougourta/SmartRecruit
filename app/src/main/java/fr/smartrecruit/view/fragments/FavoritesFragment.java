@@ -19,10 +19,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.api.SmarRecruitApi;
 import fr.smartrecruit.controller.FavoritesAdapter;
 import fr.smartrecruit.controller.FavoritesController;
-import fr.smartrecruit.controller.OffersController;
 import fr.smartrecruit.data.JobOffer;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
@@ -66,7 +64,7 @@ public class FavoritesFragment extends Fragment {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
-                new SmarRecruitApi(context).removeFromFavorites(favoriteOffers.get(position));
+                FavoritesController.getFavoritesController().removeFavorite(favoriteOffers.get(position).getId());
                 favoriteOffersAdapter.removeItem(position);
             }
 
@@ -89,7 +87,7 @@ public class FavoritesFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                OffersController.getOfferController().refreshApiOffers();
+                FavoritesController.getFavoritesController().refreshFavorites();
                 favoriteOffersAdapter.notifyDataSetChanged();
                 swipeRefreshLayout.setRefreshing(false);
             }

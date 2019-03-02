@@ -12,9 +12,12 @@ public class JobOffer implements Serializable {
     private String img;
     private String datePosted;
     private String interest;
+    private String status;
+
 
     public JobOffer(){}
 
+    // To Delete after fixing appointments data source
     public JobOffer(String company, String position, String location, String description, String datePosted, String img) {
         this.company = company;
         this.position = position;
@@ -56,6 +59,25 @@ public class JobOffer implements Serializable {
         return datePosted;
     }
 
+    public String getInterest() {
+        return interest;
+    }
+
+    public OfferStatus getStatus() {
+        switch (status){
+            case DataConstants.APP_RDV_ATT:
+                return new OfferStatus("EN ATTENTE", "#f1c40f");
+            case DataConstants.APP_RDV_RECU:
+                return new OfferStatus("RENDEZ-VOUS", "#3498db");
+            case DataConstants.APP_ACC:
+                return new OfferStatus("ACCEPTE", "#2ecc71");
+            case DataConstants.APP_REF:
+                return new OfferStatus("REFUSE", "#e74c3c");
+            default:
+                return null;
+        }
+    }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -92,11 +114,11 @@ public class JobOffer implements Serializable {
         return this.id.equals(offer.getId());
     }
 
-    public String getInterest() {
-        return interest;
-    }
-
     public void setInterest(String interest) {
         this.interest = interest;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

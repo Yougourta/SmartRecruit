@@ -3,6 +3,7 @@ package fr.smartrecruit.view.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +23,8 @@ import fr.smartrecruit.data.JobOffer;
 
 public class ApplicationsFragment extends Fragment {
     private RecyclerView applicationsRecycler;
+    private ApplicationsAdapter applicationsAdapter;
+    private List<JobOffer> applications;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +32,7 @@ public class ApplicationsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_applications, container, false);
         findViews(view);
         initAdapter();
+        refresh(view);
         return view;
     }
 
@@ -38,15 +42,25 @@ public class ApplicationsFragment extends Fragment {
 
     public void initAdapter() {
         final Context context = getContext();
-        List<JobOffer> applications = ApplicationsController.getApplicationsController().getAppliedOffers(context);
-        ApplicationsAdapter offersAdapter = new ApplicationsAdapter(applications, context);
-        applicationsRecycler.setAdapter(offersAdapter);
+        applications = ApplicationsController.getApplicationsController().getAppliedOffers(context);
+        applicationsAdapter = new ApplicationsAdapter(applications, context);
+        applicationsRecycler.setAdapter(applicationsAdapter);
         applicationsRecycler.setHasFixedSize(true);
-
-        ApplicationsController.getApplicationsController().setApiAdapter(offersAdapter);
-
+        ApplicationsController.getApplicationsController().setApiAdapter(applicationsAdapter);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         applicationsRecycler.setLayoutManager(llm);
+    }
+
+    private void refresh(View view){
+        final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ApplicationsController.getApplicationsController().refreshApplications();
+                applicationsAdapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 }
 

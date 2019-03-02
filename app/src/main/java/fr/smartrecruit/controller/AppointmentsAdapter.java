@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.smartrecruit.R;
@@ -16,7 +17,8 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
     private List<Appointment> appointments;
 
     public AppointmentsAdapter(List<Appointment> appointments){
-        this.appointments = appointments;
+        //this.appointments = appointments;
+        this.appointments = new ArrayList();
     }
 
     @NonNull

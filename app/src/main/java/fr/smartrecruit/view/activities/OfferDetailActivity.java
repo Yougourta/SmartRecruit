@@ -56,7 +56,7 @@ public class OfferDetailActivity extends AppCompatActivity{
     }
 
     public void apply(View view){
-        new OffersDetailController(this).apply(offer);
+        OffersDetailController.getOffersDetailController().apply(this, offer.getId());
         finish();
     }
 

@@ -4,14 +4,19 @@ import android.content.Context;
 
 import fr.smartrecruit.api.SmarRecruitApi;
 import fr.smartrecruit.data.DataConstants;
-import fr.smartrecruit.data.JobOffer;
 
 public class OffersDetailController {
-    private Context context;
+    private static OffersDetailController offersDetailController;
 
-    public OffersDetailController(Context context) { this.context = context; }
+    private OffersDetailController() {}
 
-    public void apply(JobOffer offer){
-        new SmarRecruitApi(context).apply(offer, DataConstants.APP_ATT_RDV);
+    public static OffersDetailController getOffersDetailController(){
+        if (offersDetailController == null)
+            offersDetailController = new OffersDetailController();
+        return offersDetailController;
+    }
+
+    public void apply(Context context, String idOffer){
+        new SmarRecruitApi(context).updateStatus(idOffer, DataConstants.APP_RDV_ATT);
     }
 }

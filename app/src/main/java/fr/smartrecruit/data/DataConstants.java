@@ -5,5 +5,8 @@ public interface DataConstants {
     String SERVER_URL = "http://192.168.1.81:5000";
     String INTERESTED = "INTERESSE";
     String DELETED = "SUPPRIME";
-    String APP_ATT_RDV = "APP_ATT_RDV";
+    String APP_RDV_ATT = "APP_RDV_ATT";
+    String APP_RDV_RECU = "APP_RDV_RECU";
+    String APP_REF = "APP_REF";
+    String APP_ACC = "APP_ACC";
 }

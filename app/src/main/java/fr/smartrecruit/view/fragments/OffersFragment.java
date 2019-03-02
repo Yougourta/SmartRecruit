@@ -71,10 +71,10 @@ public class OffersFragment extends Fragment {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
                 if (direction == ItemTouchHelper.LEFT){
-                    new SmarRecruitApi(context).updateFavorites(offers.get(position), DataConstants.DELETED);
+                    new SmarRecruitApi(context).updateStatus(offers.get(position).getId(), DataConstants.DELETED);
                     offersAdapter.removeItem(position);
                 }else if(direction == ItemTouchHelper.RIGHT){
-                    new SmarRecruitApi(context).updateFavorites(offers.get(position), DataConstants.INTERESTED);
+                    new SmarRecruitApi(context).addFavorite(offers.get(position).getId());
                     offersAdapter.removeItem(position);
                 }
             }

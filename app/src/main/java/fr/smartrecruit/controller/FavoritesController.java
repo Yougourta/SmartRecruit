@@ -8,15 +8,15 @@ import fr.smartrecruit.api.SmarRecruitApi;
 import fr.smartrecruit.data.JobOffer;
 
 public class FavoritesController {
-    private static FavoritesController favoritesOffersController;
+    private static FavoritesController favoritesController;
     private SmarRecruitApi api;
 
     private FavoritesController() { }
 
     public static FavoritesController getFavoritesController(){
-        if (favoritesOffersController == null)
-            favoritesOffersController = new FavoritesController();
-        return favoritesOffersController;
+        if (favoritesController == null)
+            favoritesController = new FavoritesController();
+        return favoritesController;
     }
 
     public List<JobOffer> getApiFavorites(Context context){
@@ -25,11 +25,15 @@ public class FavoritesController {
         return api.getFavoriteOffers();
     }
 
+    public void removeFavorite(String idOffer){
+        api.removeFavorite(idOffer);
+    }
+
     public void setApiAdapter(FavoritesAdapter adapter){
         api.setApiAdapter(adapter);
     }
 
-    public void refreshApiOffers(){
-        api.requestOffers();
+    public void refreshFavorites(){
+        api.requestFavorites();
     }
 }

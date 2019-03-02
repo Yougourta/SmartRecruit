@@ -44,7 +44,7 @@ public class SmarRecruitApi {
     public void requestOffers(){
         offers.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL+"/offers?applicant="+Applicant.getApplicant().getId();
+        final String url = DataConstants.SERVER_URL+"/offers?applicant="+USER_ID;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -67,9 +67,9 @@ public class SmarRecruitApi {
     }
 
     public void requestFavorites(){
-        offers.clear();
+        favorites.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL+"/favorites?applicant="+Applicant.getApplicant().getId();
+        final String url = DataConstants.SERVER_URL+"/favorites?applicant="+USER_ID;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -92,8 +92,9 @@ public class SmarRecruitApi {
     }
 
     public void requestApplications(){
+        applications.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL+"/applications?applicant="+Applicant.getApplicant().getId();
+        final String url = DataConstants.SERVER_URL+"/applications?applicant="+USER_ID;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -102,6 +103,7 @@ public class SmarRecruitApi {
                 for (int i=0; i<resultsJsonObject.size(); i++){
                     JsonObject jsonObject = resultsJsonObject.get(i).getAsJsonObject();
                     JobOffer jobOffer = getJobOffer(jsonObject);
+                    jobOffer.setStatus(jsonObject.get("etat").getAsString());
                     applications.add(jobOffer);
                 }
                 applicationsAdapter.notifyDataSetChanged();
@@ -115,9 +117,9 @@ public class SmarRecruitApi {
         queue.add(request);
     }
 
-    public void removeFromFavorites(JobOffer offer){
+    public void removeFavorite(String idOffer){
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL+"/updateFavorite?applicant="+Applicant.getApplicant().getId()+"&offer="+offer.getId();
+        final String url = DataConstants.SERVER_URL+"/removeFavorite?applicant="+USER_ID+"&offer="+idOffer;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -137,16 +139,26 @@ public class SmarRecruitApi {
         queue.add(request);
     }
 
-    public void updateFavorites(JobOffer offer, String status){
+    public void updateStatus(String idOffer, final String status){
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL+"/updateStatus?status="+status+"&applicant="+Applicant.getApplicant().getId()+"&offer="+offer.getId();
+        final String url = DataConstants.SERVER_URL+"/updateStatus?status="+status+"&applicant="+USER_ID+"&offer="+idOffer;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 JsonParser parser = new JsonParser();
                 String response = parser.parse(s).getAsJsonObject().get("response").getAsString();
-                if ("success".equals(response))
-                    Toast.makeText(context, "Added to favorites", Toast.LENGTH_SHORT).show();
+                if ("success".equals(response)){
+                    switch (status){
+                        case DataConstants.DELETED:
+                            Toast.makeText(context, "Offer removed", Toast.LENGTH_SHORT).show();
+                            break;
+                        case DataConstants.APP_RDV_ATT:
+                            Toast.makeText(context, "Application sent", Toast.LENGTH_SHORT).show();
+                            break;
+                        default:
+                            break;
+                    }
+                }
                 else if ("error".equals(response))
                     Toast.makeText(context, "An error occurred x(", Toast.LENGTH_SHORT).show();
             }
@@ -159,16 +171,16 @@ public class SmarRecruitApi {
         queue.add(request);
     }
 
-    public void apply(JobOffer offer, String status){
+    public void addFavorite(String idOffer){
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL+"/updateStatus?status="+status+"&applicant="+Applicant.getApplicant().getId()+"&offer="+offer.getId();
+        final String url = DataConstants.SERVER_URL+"/addFavorite?applicant="+USER_ID+"&offer="+idOffer;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 JsonParser parser = new JsonParser();
                 String response = parser.parse(s).getAsJsonObject().get("response").getAsString();
                 if ("success".equals(response))
-                    Toast.makeText(context, "Application Sent !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Added to favorites", Toast.LENGTH_SHORT).show();
                 else if ("error".equals(response))
                     Toast.makeText(context, "An error occurred x(", Toast.LENGTH_SHORT).show();
             }
