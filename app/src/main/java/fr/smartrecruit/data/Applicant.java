@@ -8,14 +8,12 @@ public class Applicant {
     private String usr;
     private String pwd;
     private ApplicantProfile profile;
-    private List<JobOffer> appliedOffers;
     private static Applicant applicant;
 
     private Applicant (String id, String usr,  String pwd, List<JobOffer> appliedOffers){
         this.id = id;
         this.usr = usr;
         this.pwd = pwd;
-        this.appliedOffers = appliedOffers;
     }
 
     public static Applicant getApplicant(){
@@ -38,18 +36,5 @@ public class Applicant {
 
     public ApplicantProfile getProfile() {
         return profile;
-    }
-
-    public List<JobOffer> getAppliedOffers() {
-        return appliedOffers;
-    }
-
-    public void setAppliedOffers(List<JobOffer> appliedOffers){
-        this.appliedOffers.clear();
-        this.appliedOffers.addAll(appliedOffers);
-    }
-
-    public void addAppliedOffer(JobOffer newOffer){
-        this.appliedOffers.add(newOffer);
     }
 }

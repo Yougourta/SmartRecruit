@@ -9,9 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import fr.smartrecruit.R;
 import fr.smartrecruit.controller.ApplicationsAdapter;
 import fr.smartrecruit.controller.ApplicationsController;
+import fr.smartrecruit.data.JobOffer;
 
 /**
  * Code du fragment c'est ici qu'on effectue les traitements concernant chaque fragment sur son affichage
@@ -35,7 +38,8 @@ public class ApplicationsFragment extends Fragment {
 
     public void initAdapter() {
         final Context context = getContext();
-        ApplicationsAdapter offersAdapter = new ApplicationsAdapter(ApplicationsController.getApplicationsController().getAppliedOffers(context), context);
+        List<JobOffer> applications = ApplicationsController.getApplicationsController().getAppliedOffers(context);
+        ApplicationsAdapter offersAdapter = new ApplicationsAdapter(applications, context);
         applicationsRecycler.setAdapter(offersAdapter);
         applicationsRecycler.setHasFixedSize(true);
 

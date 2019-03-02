@@ -91,7 +91,7 @@ public class SmarRecruitApi {
         queue.add(request);
     }
 
-    public void requestApplicantApplications(){
+    public void requestApplications(){
         RequestQueue queue = Volley.newRequestQueue(context);
         final String url = DataConstants.SERVER_URL+"/applications?applicant="+Applicant.getApplicant().getId();
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -159,9 +159,9 @@ public class SmarRecruitApi {
         queue.add(request);
     }
 
-    public void applyToOffer(JobOffer offer, Applicant applicant){
+    public void apply(JobOffer offer, String status){
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL +"/apply?applicant="+USER_ID+"&appid="+offer.getId();
+        final String url = DataConstants.SERVER_URL+"/updateStatus?status="+status+"&applicant="+Applicant.getApplicant().getId()+"&offer="+offer.getId();
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {

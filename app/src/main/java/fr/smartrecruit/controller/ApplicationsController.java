@@ -22,7 +22,7 @@ public class ApplicationsController {
 
     public List<JobOffer> getAppliedOffers(Context context){
         api = new SmarRecruitApi(context);
-        api.requestApplicantApplications();
+        api.requestApplications();
         return api.getApplications();
     }
 

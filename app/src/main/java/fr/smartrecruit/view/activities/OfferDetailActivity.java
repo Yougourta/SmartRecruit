@@ -44,13 +44,11 @@ public class OfferDetailActivity extends AppCompatActivity{
         }
 
         ImageView image = findViewById(R.id.offer_detail_image);
-
         /*Picasso.get()
                 .load(offer.getImg())
                 .fit()
                 .centerCrop()
                 .into(image);*/
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -58,7 +56,8 @@ public class OfferDetailActivity extends AppCompatActivity{
     }
 
     public void apply(View view){
-        new OffersDetailController(this).addAppliedOffer(offer);
+        new OffersDetailController(this).apply(offer);
+        finish();
     }
 
     @Override
