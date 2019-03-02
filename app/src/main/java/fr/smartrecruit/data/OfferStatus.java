@@ -5,10 +5,9 @@ public class OfferStatus {
     private String color;
     private String favorite;
 
-    public OfferStatus(String message, String color, String favorite) {
+    public OfferStatus(String message, String color) {
         this.message = message;
         this.color = color;
-        this.favorite = favorite;
     }
 
     public String getMessage() {
