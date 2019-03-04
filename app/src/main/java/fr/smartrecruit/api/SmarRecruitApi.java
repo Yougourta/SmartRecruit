@@ -23,19 +23,24 @@ import fr.smartrecruit.controller.OffersAdapter;
 import fr.smartrecruit.data.Applicant;
 import fr.smartrecruit.data.DataConstants;
 import fr.smartrecruit.data.JobOffer;
+import fr.smartrecruit.data.Recruiter;
+import fr.smartrecruit.preview.PreviewAppointment;
 
 public class SmarRecruitApi {
 
     private final String USER_ID = Applicant.getApplicant().getId();
+    private final String RECRUITER_ID = Recruiter.getRecruiter().getId();
 
     private Context context;
     private List<JobOffer> offers = new ArrayList();
     private List<JobOffer> applications = new ArrayList();
     private List<JobOffer> favorites = new ArrayList();
+    private List<PreviewAppointment> recruiterAppointments = new ArrayList();
 
     private OffersAdapter offersAdapter;
     private ApplicationsAdapter applicationsAdapter;
     private FavoritesAdapter favoritesAdapter;
+    //private NotificationsAdapter notificationsAdapter;
 
     public SmarRecruitApi(Context context){
         this.context = context;
@@ -116,6 +121,31 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
+
+    /*public void requestAppointmentsRequests(){
+        recruiterAppointments.clear();
+        RequestQueue queue = Volley.newRequestQueue(context);
+        final String url = DataConstants.SERVER_URL+"/appointmentRequests?recruiter="+RECRUITER_ID;
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                JsonParser parser = new JsonParser();
+                JsonArray resultsJsonObject = parser.parse(s).getAsJsonObject().get("appointments-requests").getAsJsonArray();
+                for (int i=0; i<resultsJsonObject.size(); i++){
+                    JsonObject jsonObject = resultsJsonObject.get(i).getAsJsonObject();
+                    PreviewAppointment appointment = getAppointment(jsonObject);
+                    recruiterAppointments.add(appointment);
+                }
+                notificationsAdapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.d("Error", volleyError.getMessage());
+            }
+        });
+        queue.add(request);
+    }*/
 
     public void removeFavorite(String idOffer){
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -217,15 +247,23 @@ public class SmarRecruitApi {
         return jobOffer;
     }
 
+    public PreviewAppointment getAppointment(JsonObject jsonObject){
+        PreviewAppointment appointment = new PreviewAppointment();
+        appointment.setApplicant(jsonObject.get("applicant").getAsString());
+        appointment.setLocation(jsonObject.get("location").getAsString());
+        appointment.setOffer(jsonObject.get("offer").getAsString());
+        appointment.setPosition(jsonObject.get("position").getAsString());
+        return appointment;
+    }
+
     public void setApiAdapter(OffersAdapter adapter){
         this.offersAdapter = adapter;
     }
-
     public void setApiAdapter(ApplicationsAdapter adapter){
         this.applicationsAdapter = adapter;
     }
-
     public void setApiAdapter(FavoritesAdapter adapter){
         this.favoritesAdapter = adapter;
     }
+    //public void setApiAdapter(NotificationsAdapter adapter){this.notificationsAdapter = adapter; }
 }

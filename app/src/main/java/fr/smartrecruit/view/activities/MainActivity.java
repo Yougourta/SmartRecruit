@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import fr.smartrecruit.R;
 import fr.smartrecruit.view.fragments.ApplicationsFragment;
 import fr.smartrecruit.view.fragments.AppointmentsFragment;
-import fr.smartrecruit.view.fragments.NotificationsFragment;
+import fr.smartrecruit.preview.NotificationsFragment;
 import fr.smartrecruit.view.fragments.OffersFragment;
 import fr.smartrecruit.view.fragments.FavoritesFragment;
 

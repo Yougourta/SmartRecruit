@@ -20,4 +20,8 @@
     <string name="title_activity_offer_detail">OfferDetailActivity</string>
 
     <string name="text_posted">Posted on : %1$s</string>
+
+    <string name="action_search">Search</string>
+    <string name="search_hint">Type text…</string>
+    <string name="toolbar_title">Smart Recruit</string>
 </resources>

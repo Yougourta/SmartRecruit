@@ -62,7 +62,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         return offers.size();
     }
 
-    public static class OffersViewHolder extends RecyclerView.ViewHolder{
+    public class OffersViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView image;
         private TextView company;

@@ -1,4 +1,4 @@
-package fr.smartrecruit.view.fragments;
+package fr.smartrecruit.preview;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
