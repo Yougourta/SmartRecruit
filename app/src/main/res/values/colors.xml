@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#3A8EB3</color>
     <color name="colorAccent">#10BC8E</color>
 
+    <color name="year">#999999</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#FF0000</color>
+
     <color name="deleteColor">#ff7961</color>
     <color name="favoriteColor">#10BC8E</color>
 </resources>

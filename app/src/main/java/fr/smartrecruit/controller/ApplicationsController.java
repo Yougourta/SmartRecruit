@@ -7,16 +7,16 @@ import java.util.List;
 import fr.smartrecruit.api.SmarRecruitApi;
 import fr.smartrecruit.data.JobOffer;
 
-public class ApplicationsController {
+public class ApplicationController {
 
-    private static ApplicationsController applicationsController;
+    private static ApplicationController applicationsController;
     private SmarRecruitApi api;
 
-    private ApplicationsController() { }
+    private ApplicationController() { }
 
-    public static ApplicationsController getApplicationsController(){
+    public static ApplicationController getApplicationsController(){
         if (applicationsController == null)
-            return  applicationsController = new ApplicationsController();
+            return  applicationsController = new ApplicationController();
         return applicationsController;
     }
 
@@ -26,7 +26,7 @@ public class ApplicationsController {
         return api.getApplications();
     }
 
-    public void setApiAdapter(ApplicationsAdapter adapter){
+    public void setApiAdapter(ApplicationAdapter adapter){
         api.setApiAdapter(adapter);
     }
 
