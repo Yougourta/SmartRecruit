@@ -17,7 +17,7 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.smartrecruit.controller.ApplicationsAdapter;
+import fr.smartrecruit.controller.ApplicationAdapter;
 import fr.smartrecruit.controller.OffersAdapter;
 import fr.smartrecruit.data.Applicant;
 import fr.smartrecruit.data.DataConstants;
@@ -32,13 +32,14 @@ public class SmarRecruitApi {
     private List<JobOffer> applications = new ArrayList();
 
     private OffersAdapter offersAdapter;
-    private ApplicationsAdapter applicationsAdapter;
+    private ApplicationAdapter applicationsAdapter;
 
     public SmarRecruitApi(Context context){
         this.context = context;
     }
 
     public void requestOffers(){
+        Log.d("toto", "tototototoototototot");
         offers.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
         final String url = DataConstants.SERVER_URL+"/offers";
@@ -134,7 +135,7 @@ public class SmarRecruitApi {
         this.offersAdapter = adapter;
     }
 
-    public void setApiAdapter(ApplicationsAdapter adapter){
+    public void setApiAdapter(ApplicationAdapter adapter){
         this.applicationsAdapter = adapter;
     }
 }

@@ -16,24 +16,24 @@ import fr.smartrecruit.data.FragmentConstants;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.view.activities.OfferDetailActivity;
 
-public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapter.OffersViewHolder> {
+public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.OffersViewHolder> {
 
 
     private List<JobOffer> appliedOffers;
     private Context context;
 
-    public ApplicationsAdapter(List<JobOffer> appliedOffers, Context context){
+    public ApplicationAdapter(List<JobOffer> appliedOffers, Context context){
         this.appliedOffers = appliedOffers;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ApplicationsAdapter.OffersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public ApplicationAdapter.OffersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View item = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.fragment_applications_row, parent, false);
-        return new ApplicationsAdapter.OffersViewHolder(item);
+                .inflate(R.layout.fragment_candidat_row, parent, false);
+        return new ApplicationAdapter.OffersViewHolder(item);
     }
 
     @Override

@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.controller.ApplicationsAdapter;
-import fr.smartrecruit.controller.ApplicationsController;
+import fr.smartrecruit.controller.ApplicationAdapter;
+import fr.smartrecruit.controller.ApplicationController;
 
 /**
  * Code du fragment c'est ici qu'on effectue les traitements concernant chaque fragment sur son affichage
@@ -35,11 +35,11 @@ public class ApplicationsFragment extends Fragment {
 
     public void initAdapter() {
         final Context context = getContext();
-        ApplicationsAdapter offersAdapter = new ApplicationsAdapter(ApplicationsController.getApplicationsController().getAppliedOffers(context), context);
+        ApplicationAdapter offersAdapter = new ApplicationAdapter(ApplicationController.getApplicationsController().getAppliedOffers(context), context);
         applicationsRecycler.setAdapter(offersAdapter);
         applicationsRecycler.setHasFixedSize(true);
 
-        ApplicationsController.getApplicationsController().setApiAdapter(offersAdapter);
+        ApplicationController.getApplicationsController().setApiAdapter(offersAdapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         applicationsRecycler.setLayoutManager(llm);
