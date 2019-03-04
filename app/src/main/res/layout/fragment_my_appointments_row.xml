@@ -62,5 +62,18 @@
             android:textColor="#424242"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recAppointments_location" />
+
+        <TextView
+            android:id="@+id/recAppointments_offer_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/dummy_text"
+            android:textColor="#424242"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recAppointments_applicant_id" />
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

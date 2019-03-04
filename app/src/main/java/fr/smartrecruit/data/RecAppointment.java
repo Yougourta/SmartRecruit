@@ -4,6 +4,7 @@ public class RecAppointment {
     private String location;
     private String applicant;
     private String position;
+    private String offer;
 
     public String getLocation() {
         return location;
@@ -27,5 +28,13 @@ public class RecAppointment {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getOffer() {
+        return offer;
+    }
+
+    public void setOffer(String offer) {
+        this.offer = offer;
     }
 }

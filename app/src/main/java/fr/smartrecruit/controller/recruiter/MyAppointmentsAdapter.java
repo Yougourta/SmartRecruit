@@ -47,6 +47,7 @@ public class MyAppointmentsAdapter extends RecyclerView.Adapter<MyAppointmentsAd
         private TextView position;
         private TextView location;
         private TextView applicant;
+        private TextView offer;
 
         public MyAppointmentsViewHolder(View itemView) {
             super(itemView);
@@ -57,12 +58,15 @@ public class MyAppointmentsAdapter extends RecyclerView.Adapter<MyAppointmentsAd
             position = view.findViewById(R.id.recAppointments_position);
             location = view.findViewById(R.id.recAppointments_location);
             applicant = view.findViewById(R.id.recAppointments_applicant_id);
+            offer = view.findViewById(R.id.recAppointments_offer_id);
+
         }
 
         public void setView(RecAppointment appointment){
             position.setText(appointment.getPosition());
             location.setText(appointment.getLocation());
             applicant.setText("Applicant ID: "+appointment.getApplicant());
+            offer.setText("Offer ID: "+appointment.getOffer());
         }
     }
 

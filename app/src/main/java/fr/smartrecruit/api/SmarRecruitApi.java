@@ -256,6 +256,7 @@ public class SmarRecruitApi {
         appointment.setApplicant(jsonObject.get("applicant").getAsString());
         appointment.setLocation(jsonObject.get("location").getAsString());
         appointment.setPosition(jsonObject.get("position").getAsString());
+        appointment.setOffer(jsonObject.get("offer").getAsString());
         return appointment;
     }
     public List<RecAppointment> getRecruiterAppointments(){ return  recruiterAppointments; }
