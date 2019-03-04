@@ -22,7 +22,7 @@
             android:label="@string/title_activity_offer_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".view.activities.MainActivity1"
+            android:name=".view.activities.MainActivity"
             android:label="Main Activity 1"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activities.MainActivity"
+            android:name=".view.activities.CandidatActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
