@@ -10,11 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.view.fragments.ApplicationsFragment;
-import fr.smartrecruit.view.fragments.AppointmentsFragment;
+import fr.smartrecruit.view.fragments.candidat.ApplicationsFragment;
+import fr.smartrecruit.view.fragments.candidat.AppointmentsFragment;
 import fr.smartrecruit.preview.NotificationsFragment;
-import fr.smartrecruit.view.fragments.OffersFragment;
-import fr.smartrecruit.view.fragments.FavoritesFragment;
+import fr.smartrecruit.view.fragments.candidat.OffersFragment;
+import fr.smartrecruit.view.fragments.candidat.FavoritesFragment;
 
 public class CandidatActivity extends AppCompatActivity {
 
@@ -70,5 +70,4 @@ public class CandidatActivity extends AppCompatActivity {
         //Charger le fragment de la liste des offres comme principal
         fm.beginTransaction().add(R.id.frame, offersFm).show(offersFm).commit();
     }
-
 }

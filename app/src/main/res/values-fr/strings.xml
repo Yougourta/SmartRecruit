@@ -23,4 +23,7 @@
     <string name="action_search">Recherche</string>
     <string name="search_hint">Tapez du text…</string>
     <string name="toolbar_title">Smart Recruit</string>
+
+    <string name="title_activity_candidat">Candidat</string>
+    <string name="title_activity_recruiter">Recruteur</string>
 </resources>

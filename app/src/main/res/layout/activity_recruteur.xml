@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_recruiter"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -22,19 +22,19 @@
     </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
-        android:id="@+id/frame"
+        android:id="@+id/frame_recruteur"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/appBar"
-        android:layout_above="@+id/navigation"/>
+        android:layout_above="@+id/btn_recruiter"/>
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/btn_recruiter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
         android:layout_alignParentBottom="true"
         app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/navigation_candidat" />
+        app:menu="@menu/navigation_recruteur" />
 
 </RelativeLayout>

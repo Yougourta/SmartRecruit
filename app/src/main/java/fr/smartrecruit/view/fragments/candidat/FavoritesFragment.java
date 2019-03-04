@@ -1,4 +1,4 @@
-package fr.smartrecruit.view.fragments;
+package fr.smartrecruit.view.fragments.candidat;
 
 import android.content.Context;
 import android.graphics.Canvas;
