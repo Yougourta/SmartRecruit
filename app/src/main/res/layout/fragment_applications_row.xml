@@ -127,7 +127,6 @@
                 app:layout_constraintStart_toEndOf="@+id/application_posted"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
         </android.support.constraint.ConstraintLayout>
-
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
