@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.controller.OffersDetailController;
+import fr.smartrecruit.controller.candidat.OffersDetailController;
 import fr.smartrecruit.data.FragmentConstants;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.databinding.ActivityOfferDetailBinding;

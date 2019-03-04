@@ -1,4 +1,4 @@
-package fr.smartrecruit.controller;
+package fr.smartrecruit.controller.candidat;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

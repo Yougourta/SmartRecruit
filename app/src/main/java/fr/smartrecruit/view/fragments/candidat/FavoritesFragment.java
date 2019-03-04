@@ -19,8 +19,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.controller.FavoritesAdapter;
-import fr.smartrecruit.controller.FavoritesController;
+import fr.smartrecruit.controller.candidat.FavoritesAdapter;
+import fr.smartrecruit.controller.candidat.FavoritesController;
 import fr.smartrecruit.data.JobOffer;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
@@ -83,7 +83,7 @@ public class FavoritesFragment extends Fragment {
     }
 
     private void refresh(View view){
-        final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh);
+        final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh_favorites);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

@@ -1,9 +1,8 @@
-package fr.smartrecruit.preview;
+package fr.smartrecruit.data;
 
-public class PreviewAppointment {
+public class RecAppointment {
     private String location;
     private String applicant;
-    private String offer;
     private String position;
 
     public String getLocation() {
@@ -20,14 +19,6 @@ public class PreviewAppointment {
 
     public void setApplicant(String applicant) {
         this.applicant = applicant;
-    }
-
-    public String getOffer() {
-        return offer;
-    }
-
-    public void setOffer(String offer) {
-        this.offer = offer;
     }
 
     public String getPosition() {

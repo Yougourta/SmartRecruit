@@ -17,14 +17,15 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.smartrecruit.controller.ApplicationsAdapter;
-import fr.smartrecruit.controller.FavoritesAdapter;
-import fr.smartrecruit.controller.OffersAdapter;
+import fr.smartrecruit.controller.candidat.ApplicationsAdapter;
+import fr.smartrecruit.controller.candidat.FavoritesAdapter;
+import fr.smartrecruit.controller.candidat.OffersAdapter;
+import fr.smartrecruit.controller.recruiter.MyAppointmentsAdapter;
 import fr.smartrecruit.data.Applicant;
 import fr.smartrecruit.data.DataConstants;
 import fr.smartrecruit.data.JobOffer;
+import fr.smartrecruit.data.RecAppointment;
 import fr.smartrecruit.data.Recruiter;
-import fr.smartrecruit.preview.PreviewAppointment;
 
 public class SmarRecruitApi {
 
@@ -35,17 +36,19 @@ public class SmarRecruitApi {
     private List<JobOffer> offers = new ArrayList();
     private List<JobOffer> applications = new ArrayList();
     private List<JobOffer> favorites = new ArrayList();
-    private List<PreviewAppointment> recruiterAppointments = new ArrayList();
+    private List<RecAppointment> recruiterAppointments = new ArrayList();
 
     private OffersAdapter offersAdapter;
     private ApplicationsAdapter applicationsAdapter;
     private FavoritesAdapter favoritesAdapter;
-    //private NotificationsAdapter notificationsAdapter;
+    private MyAppointmentsAdapter recruiterAppointmentsAdapter;
 
     public SmarRecruitApi(Context context){
         this.context = context;
     }
 
+
+    /** Applicant requests section **/
     public void requestOffers(){
         offers.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -121,31 +124,6 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
-
-    /*public void requestAppointmentsRequests(){
-        recruiterAppointments.clear();
-        RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL+"/appointmentRequests?recruiter="+RECRUITER_ID;
-        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-                JsonParser parser = new JsonParser();
-                JsonArray resultsJsonObject = parser.parse(s).getAsJsonObject().get("appointments-requests").getAsJsonArray();
-                for (int i=0; i<resultsJsonObject.size(); i++){
-                    JsonObject jsonObject = resultsJsonObject.get(i).getAsJsonObject();
-                    PreviewAppointment appointment = getAppointment(jsonObject);
-                    recruiterAppointments.add(appointment);
-                }
-                notificationsAdapter.notifyDataSetChanged();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                Log.d("Error", volleyError.getMessage());
-            }
-        });
-        queue.add(request);
-    }*/
 
     public void removeFavorite(String idOffer){
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -227,14 +205,39 @@ public class SmarRecruitApi {
         return this.offers;
     }
 
+    /** Recruiter requests section **/
+    public void requestRecruiterAppointments(){
+        recruiterAppointments.clear();
+        RequestQueue queue = Volley.newRequestQueue(context);
+        final String url = DataConstants.SERVER_URL+"/appointmentRequests?recruiter="+RECRUITER_ID;
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                JsonParser parser = new JsonParser();
+                JsonArray resultsJsonObject = parser.parse(s).getAsJsonObject().get("appointments-requests").getAsJsonArray();
+                for (int i=0; i<resultsJsonObject.size(); i++){
+                    JsonObject jsonObject = resultsJsonObject.get(i).getAsJsonObject();
+                    RecAppointment appointment = getRecAppointment(jsonObject);
+                    recruiterAppointments.add(appointment);
+                }
+                recruiterAppointmentsAdapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.d("Error", volleyError.getMessage());
+            }
+        });
+        queue.add(request);
+    }
+
+    /** Applicant methods **/
     public List<JobOffer> getFavoriteOffers(){
         return this.favorites;
     }
-
     public List<JobOffer> getApplications(){
         return this.applications;
     }
-
     public JobOffer getJobOffer(JsonObject jsonObject){
         JobOffer jobOffer = new JobOffer();
         jobOffer.setId(jsonObject.get("id").getAsString());
@@ -247,15 +250,17 @@ public class SmarRecruitApi {
         return jobOffer;
     }
 
-    public PreviewAppointment getAppointment(JsonObject jsonObject){
-        PreviewAppointment appointment = new PreviewAppointment();
+    /** Recruiter methods**/
+    public RecAppointment getRecAppointment(JsonObject jsonObject){
+        RecAppointment appointment = new RecAppointment();
         appointment.setApplicant(jsonObject.get("applicant").getAsString());
         appointment.setLocation(jsonObject.get("location").getAsString());
-        appointment.setOffer(jsonObject.get("offer").getAsString());
         appointment.setPosition(jsonObject.get("position").getAsString());
         return appointment;
     }
+    public List<RecAppointment> getRecruiterAppointments(){ return  recruiterAppointments; }
 
+    /** adapters **/
     public void setApiAdapter(OffersAdapter adapter){
         this.offersAdapter = adapter;
     }
@@ -265,5 +270,5 @@ public class SmarRecruitApi {
     public void setApiAdapter(FavoritesAdapter adapter){
         this.favoritesAdapter = adapter;
     }
-    //public void setApiAdapter(NotificationsAdapter adapter){this.notificationsAdapter = adapter; }
+    public void setApiAdapter(MyAppointmentsAdapter adapter){this.recruiterAppointmentsAdapter = adapter; }
 }

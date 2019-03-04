@@ -12,9 +12,9 @@ import android.view.MenuItem;
 import fr.smartrecruit.R;
 import fr.smartrecruit.view.fragments.candidat.ApplicationsFragment;
 import fr.smartrecruit.view.fragments.candidat.AppointmentsFragment;
-import fr.smartrecruit.preview.NotificationsFragment;
-import fr.smartrecruit.view.fragments.candidat.OffersFragment;
 import fr.smartrecruit.view.fragments.candidat.FavoritesFragment;
+import fr.smartrecruit.view.fragments.candidat.NotificationsFragment;
+import fr.smartrecruit.view.fragments.candidat.OffersFragment;
 
 public class CandidatActivity extends AppCompatActivity {
 

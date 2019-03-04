@@ -20,8 +20,8 @@ import java.util.List;
 
 import fr.smartrecruit.R;
 import fr.smartrecruit.api.SmarRecruitApi;
-import fr.smartrecruit.controller.OffersAdapter;
-import fr.smartrecruit.controller.OffersController;
+import fr.smartrecruit.controller.candidat.OffersAdapter;
+import fr.smartrecruit.controller.candidat.OffersController;
 import fr.smartrecruit.data.DataConstants;
 import fr.smartrecruit.data.JobOffer;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
@@ -70,13 +70,11 @@ public class OffersFragment extends Fragment {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
-                if (direction == ItemTouchHelper.LEFT){
+                if (direction == ItemTouchHelper.LEFT)
                     new SmarRecruitApi(context).updateStatus(offers.get(position).getId(), DataConstants.DELETED);
-                    offersAdapter.removeItem(position);
-                }else if(direction == ItemTouchHelper.RIGHT){
+                else if(direction == ItemTouchHelper.RIGHT)
                     new SmarRecruitApi(context).addFavorite(offers.get(position).getId());
-                    offersAdapter.removeItem(position);
-                }
+                offersAdapter.removeItem(position);
             }
 
             @Override

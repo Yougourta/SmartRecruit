@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.controller.ApplicationsAdapter;
-import fr.smartrecruit.controller.ApplicationsController;
+import fr.smartrecruit.controller.candidat.ApplicationsAdapter;
+import fr.smartrecruit.controller.candidat.ApplicationsController;
 import fr.smartrecruit.data.JobOffer;
 
 /**
@@ -52,7 +52,7 @@ public class ApplicationsFragment extends Fragment {
     }
 
     private void refresh(View view){
-        final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh);
+        final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh_applications);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

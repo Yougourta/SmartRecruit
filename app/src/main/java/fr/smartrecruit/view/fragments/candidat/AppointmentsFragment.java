@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.controller.AppointmentsAdapter;
-import fr.smartrecruit.controller.AppointmentsController;
+import fr.smartrecruit.controller.candidat.AppointmentsAdapter;
+import fr.smartrecruit.controller.candidat.AppointmentsController;
 
 public class AppointmentsFragment extends Fragment {
     private AppointmentsController appointmentsController = new AppointmentsController();
@@ -36,7 +36,5 @@ public class AppointmentsFragment extends Fragment {
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         applicationsRecycler.setLayoutManager(llm);
-
-        
     }
 }

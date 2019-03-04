@@ -1,4 +1,4 @@
-package fr.smartrecruit.controller;
+package fr.smartrecruit.controller.candidat;
 
 
 import java.util.ArrayList;
