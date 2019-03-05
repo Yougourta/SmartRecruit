@@ -1,12 +1,14 @@
 package fr.smartrecruit.view.fragments.recruteur;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -66,12 +68,36 @@ public class MyAppointmentsFragment extends Fragment {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                int position = viewHolder.getAdapterPosition();
-                if (direction == ItemTouchHelper.LEFT)
-                    MyAppointmentsController.getMyAppointmentsController().rejectApplication(appointments.get(position).getOffer());
-                if (direction == ItemTouchHelper.RIGHT)
+                final int position = viewHolder.getAdapterPosition();
+                if (direction == ItemTouchHelper.LEFT) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setCancelable(true);
+                    builder.setTitle("Reject application");
+                    builder.setMessage("Do you really want reject this application ?");
+                    builder.setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    MyAppointmentsController.getMyAppointmentsController().rejectApplication(appointments.get(position).getOffer());
+                                    appointmentsAdapter.removeItem(position);
+                                    dialog.dismiss();
+                                }
+                            });
+                    builder.setNegativeButton("No",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    appointmentsAdapter.notifyDataSetChanged();
+                                    dialog.dismiss();
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+                if (direction == ItemTouchHelper.RIGHT){
                     Toast.makeText(getContext(), "Pick date and time", Toast.LENGTH_SHORT).show();
-                appointmentsAdapter.removeItem(position);
+                    appointmentsAdapter.removeItem(position);
+                }
             }
 
             @Override
