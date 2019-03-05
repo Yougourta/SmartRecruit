@@ -49,7 +49,7 @@
                 android:id="@+id/scroll_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toTopOf="@+id/offer_detail_apply"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -65,18 +65,18 @@
                         android:id="@+id/offer_detail_image"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_background"
-                        android:visibility="gone"/>
+                        app:srcCompat="@drawable/ic_launcher_background" />
 
                     <TextView
                         android:id="@+id/offer_detail_posted"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
                         android:text="@{offer.datePosted}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/offer_detail_company" />
@@ -185,20 +185,6 @@
 
                 </android.support.constraint.ConstraintLayout>
             </android.support.v4.widget.NestedScrollView>
-
-            <Button
-                android:id="@+id/offer_detail_apply"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@color/colorAccent"
-                android:backgroundTintMode="add"
-                android:text="Apply"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:onClick="apply"/>
-
         </android.support.constraint.ConstraintLayout>
     </android.support.constraint.ConstraintLayout>
 </layout>

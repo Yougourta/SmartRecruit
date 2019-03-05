@@ -4,13 +4,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.controller.candidat.OffersDetailController;
-import fr.smartrecruit.data.FragmentConstants;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.databinding.ActivityOfferDetailBinding;
 
@@ -27,22 +23,6 @@ public class OfferDetailActivity extends AppCompatActivity{
         ActivityOfferDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_offer_detail);
         binding.setOffer(offer);
 
-        Button apply = findViewById(R.id.offer_detail_apply);
-        switch (getIntent().getIntExtra("fragment", 0)){
-            case FragmentConstants.Fragment_Offers:
-                apply.setVisibility(View.VISIBLE);
-                break;
-            case FragmentConstants.Fragment_Favorites:
-                apply.setVisibility(View.VISIBLE);
-                break;
-            case FragmentConstants.Fragment_Applications:
-                apply.setVisibility(View.GONE);
-                break;
-            default:
-                break;
-
-        }
-
         ImageView image = findViewById(R.id.offer_detail_image);
         /*Picasso.get()
                 .load(offer.getImg())
@@ -53,11 +33,6 @@ public class OfferDetailActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }
-
-    public void apply(View view){
-        OffersDetailController.getOffersDetailController().apply(this, offer.getId());
-        finish();
     }
 
     @Override
