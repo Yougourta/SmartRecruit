@@ -29,7 +29,7 @@ public class MyAppointmentsAdapter extends RecyclerView.Adapter<MyAppointmentsAd
         View item = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.fragment_my_appointments_row, parent, false);
-        return new MyAppointmentsAdapter.MyAppointmentsViewHolder(item);
+        return new MyAppointmentsViewHolder(item);
     }
 
     @Override
@@ -59,7 +59,6 @@ public class MyAppointmentsAdapter extends RecyclerView.Adapter<MyAppointmentsAd
             location = view.findViewById(R.id.recAppointments_location);
             applicant = view.findViewById(R.id.recAppointments_applicant_id);
             offer = view.findViewById(R.id.recAppointments_offer_id);
-
         }
 
         public void setView(RecAppointment appointment){

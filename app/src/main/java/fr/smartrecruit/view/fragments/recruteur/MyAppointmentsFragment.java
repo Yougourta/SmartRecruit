@@ -58,7 +58,7 @@ public class MyAppointmentsFragment extends Fragment {
         appointmentsRecycler.setItemAnimator(new DefaultItemAnimator());
         appointmentsRecycler.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
 
-        ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
@@ -68,10 +68,8 @@ public class MyAppointmentsFragment extends Fragment {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
                 if (direction == ItemTouchHelper.LEFT)
-                    // Mark application rejected
-                    Toast.makeText(getContext(), "Application rejected", Toast.LENGTH_SHORT).show();
-                else if (direction == ItemTouchHelper.RIGHT)
-                    // Launch date and time picker
+                    MyAppointmentsController.getMyAppointmentsController().rejectApplication(appointments.get(position).getOffer());
+                if (direction == ItemTouchHelper.RIGHT)
                     Toast.makeText(getContext(), "Pick date and time", Toast.LENGTH_SHORT).show();
                 appointmentsAdapter.removeItem(position);
             }

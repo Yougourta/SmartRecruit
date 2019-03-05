@@ -230,6 +230,27 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
+    public void rejectApplication(String offerId){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        final String url = DataConstants.SERVER_URL+"/rejectApplication?applicant="+USER_ID+"&offer="+offerId;
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                JsonParser parser = new JsonParser();
+                String response = parser.parse(s).getAsJsonObject().get("response").getAsString();
+                if ("success".equals(response))
+                    Toast.makeText(context, "Application Rejected", Toast.LENGTH_SHORT).show();
+                else if ("error".equals(response))
+                    Toast.makeText(context, "An error occurred x(", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.d("Error", volleyError.getMessage());
+            }
+        });
+        queue.add(request);
+    }
 
     /** Applicant methods **/
     public List<JobOffer> getFavoriteOffers(){

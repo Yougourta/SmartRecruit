@@ -11,7 +11,7 @@ public class MyAppointmentsController {
     private static MyAppointmentsController myAppointmentsController;
     private SmarRecruitApi api;
 
-    private MyAppointmentsController() { }
+    private MyAppointmentsController() {}
 
     public static MyAppointmentsController getMyAppointmentsController(){
         if (myAppointmentsController == null)
@@ -23,6 +23,9 @@ public class MyAppointmentsController {
         api = new SmarRecruitApi(context);
         api.requestRecruiterAppointments();
         return api.getRecruiterAppointments();
+    }
+    public void rejectApplication(String offerId){
+        api.rejectApplication(offerId);
     }
 
     public void setApiAdapter(MyAppointmentsAdapter adapter){
