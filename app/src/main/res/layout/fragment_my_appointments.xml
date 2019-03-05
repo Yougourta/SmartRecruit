@@ -3,17 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.candidat.AppointmentsFragment">
+    tools:context=".view.fragments.recruteur.MyAppointmentsFragment">
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_to_refresh_appointments"
+        android:id="@+id/swipe_to_refresh_recappointments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/listAppointments"
+            android:id="@+id/listRecAppointments"
             android:scrollbars="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </android.support.v4.widget.SwipeRefreshLayout>
-
 </FrameLayout>

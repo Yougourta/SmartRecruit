@@ -7,6 +7,11 @@
         android:title="@string/title_home" />
 
     <item
+        android:id="@+id/navigation_favorite"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="@string/title_favorite" />
+
+    <item
         android:id="@+id/navigation_applications"
         android:icon="@drawable/ic_app_jobs_black_24dp"
         android:title="@string/title_applications" />
@@ -15,11 +20,6 @@
         android:id="@+id/navigation_appointments"
         android:icon="@drawable/ic_app_appointments_black_24dp"
         android:title="@string/title_appointments" />
-
-    <item
-        android:id="@+id/navigation_tips"
-        android:icon="@drawable/ic_app_tips_black_24dp"
-        android:title="@string/title_tips" />
 
     <item
         android:id="@+id/navigation_notifications"

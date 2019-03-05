@@ -1,4 +1,4 @@
-package fr.smartrecruit.controller;
+package fr.smartrecruit.controller.candidat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -28,6 +26,9 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     private List<JobOffer> offers;
     private Context context;
 
+    private JobOffer mRecentlyDeletedItem;
+    private int mRecentlyDeletedItemPosition;
+
     public OffersAdapter(List<JobOffer> offers, Context context){
         this.offers = offers;
         this.context = context;
@@ -44,7 +45,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
 
     @Override
     public void onBindViewHolder(@NonNull OffersViewHolder holder, final int position) {
-        holder.setView(offers.get(position));
+        holder.setView(context, offers.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +62,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         return offers.size();
     }
 
-    public static class OffersViewHolder extends RecyclerView.ViewHolder{
+    public class OffersViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView image;
         private TextView company;
@@ -84,17 +85,25 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             postedDate = view.findViewById(R.id.offer_posted);
         }
 
-        public void setView(JobOffer offer){
-            Picasso.get()
+        public void setView(Context context, JobOffer offer){
+            /*Picasso.get()
                     .load(offer.getImg())
                     .fit()
                     .centerCrop()
-                    .into(image);
+                    .into(image);*/
             position.setText(offer.getPosition());
             company.setText(offer.getCompany());
             location.setText(offer.getLocation());
             description.setText(offer.getDescription());
             postedDate.setText(offer.getDatePosted());
         }
+    }
+
+    public void removeItem(int position){
+        mRecentlyDeletedItem = offers.get(position);
+        mRecentlyDeletedItemPosition = position;
+        offers.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
     }
 }

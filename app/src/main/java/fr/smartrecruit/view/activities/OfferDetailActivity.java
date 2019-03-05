@@ -7,15 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import fr.smartrecruit.R;
+import fr.smartrecruit.controller.candidat.OffersDetailController;
 import fr.smartrecruit.data.FragmentConstants;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.databinding.ActivityOfferDetailBinding;
-import fr.smartrecruit.controller.OffersDetailController;
 
 public class OfferDetailActivity extends AppCompatActivity{
 
@@ -35,6 +32,9 @@ public class OfferDetailActivity extends AppCompatActivity{
             case FragmentConstants.Fragment_Offers:
                 apply.setVisibility(View.VISIBLE);
                 break;
+            case FragmentConstants.Fragment_Favorites:
+                apply.setVisibility(View.VISIBLE);
+                break;
             case FragmentConstants.Fragment_Applications:
                 apply.setVisibility(View.GONE);
                 break;
@@ -44,12 +44,11 @@ public class OfferDetailActivity extends AppCompatActivity{
         }
 
         ImageView image = findViewById(R.id.offer_detail_image);
-        Picasso.get()
+        /*Picasso.get()
                 .load(offer.getImg())
                 .fit()
                 .centerCrop()
-                .into(image);
-
+                .into(image);*/
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -57,8 +56,8 @@ public class OfferDetailActivity extends AppCompatActivity{
     }
 
     public void apply(View view){
-        new OffersDetailController().addAppliedOffer(offer);
-        Toast.makeText(this, "You applied to: "+offer.getPosition(), Toast.LENGTH_SHORT).show();
+        OffersDetailController.getOffersDetailController().apply(this, offer.getId());
+        finish();
     }
 
     @Override

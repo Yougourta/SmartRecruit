@@ -1,7 +1,9 @@
-package fr.smartrecruit.controller;
+package fr.smartrecruit.controller.candidat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,11 +18,12 @@ import fr.smartrecruit.data.FragmentConstants;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.view.activities.OfferDetailActivity;
 
-public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapter.OffersViewHolder> {
-
-
+public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapter.ApplicationsViewHolder> {
     private List<JobOffer> appliedOffers;
     private Context context;
+
+    private JobOffer mRecentlyDeletedItem;
+    private int mRecentlyDeletedItemPosition;
 
     public ApplicationsAdapter(List<JobOffer> appliedOffers, Context context){
         this.appliedOffers = appliedOffers;
@@ -29,15 +32,15 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
 
     @NonNull
     @Override
-    public ApplicationsAdapter.OffersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public ApplicationsAdapter.ApplicationsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View item = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.fragment_applications_row, parent, false);
-        return new ApplicationsAdapter.OffersViewHolder(item);
+        return new ApplicationsAdapter.ApplicationsViewHolder(item);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OffersViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ApplicationsViewHolder holder, final int position) {
         holder.setView(appliedOffers.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,13 +58,14 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
         return appliedOffers.size();
     }
 
-    public class OffersViewHolder  extends RecyclerView.ViewHolder {
+    public class ApplicationsViewHolder  extends RecyclerView.ViewHolder {
         private TextView company;
         private TextView position;
         private TextView location;
         private TextView postedDate;
+        private TextView status;
 
-        public OffersViewHolder(@NonNull View itemView) {
+        public ApplicationsViewHolder(@NonNull View itemView) {
             super(itemView);
             findViews(itemView);
         }
@@ -70,6 +74,7 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
             position = view.findViewById(R.id.application_position);
             location = view.findViewById(R.id.application_location);
             postedDate = view.findViewById(R.id.application_posted);
+            status = view.findViewById(R.id.application_status);
         }
 
         public void setView(JobOffer offer){
@@ -77,6 +82,18 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
             company.setText(offer.getCompany());
             location.setText(offer.getLocation());
             postedDate.setText(offer.getDatePosted());
+            status.setText(offer.getStatus().getMessage());
+            status.setBackgroundResource(R.drawable.rounded_corner);
+            GradientDrawable drawable = (GradientDrawable) status.getBackground();
+            drawable.setColor(Color.parseColor(offer.getStatus().getColor()));
         }
+    }
+
+    public void removeItem(int position){
+        mRecentlyDeletedItem = appliedOffers.get(position);
+        mRecentlyDeletedItemPosition = position;
+        appliedOffers.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
     }
 }

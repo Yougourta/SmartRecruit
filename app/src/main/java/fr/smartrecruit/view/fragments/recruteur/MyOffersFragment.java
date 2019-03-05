@@ -1,4 +1,4 @@
-package fr.smartrecruit.view.fragments;
+package fr.smartrecruit.view.fragments.recruteur;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,13 +13,15 @@ import fr.smartrecruit.view.activities.CandidatActivity;
 import fr.smartrecruit.view.activities.MainActivity;
 import fr.smartrecruit.view.activities.RecruteurActivity;
 
-public class TipsFragment extends Fragment {
+public class MyOffersFragment extends Fragment {
+
+    public MyOffersFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tips, container, false);
+        return inflater.inflate(R.layout.fragment_my_offers, container, false);
     }
 
     public void onCreate(Bundle savedInstanceState) //A la   creation de la vue

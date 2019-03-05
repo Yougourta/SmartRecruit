@@ -5,6 +5,7 @@
     <string name="title_activity_offers">OffersActivity</string>
 
     <string name="title_home">Accueil</string>
+    <string name="title_favorite">Favoris</string>
     <string name="title_applications">Jobs</string>
     <string name="title_appointments">Rendez-vous</string>
     <string name="title_tips">Astuces</string>
@@ -17,4 +18,12 @@
 
     <string name="dummy_text">Lorem Ipsum</string>
     <string name="title_activity_offer_detail">OfferDetailActivity</string>
+
+    <string name="text_posted">Posté le : %1$s</string>
+    <string name="action_search">Recherche</string>
+    <string name="search_hint">Tapez du text…</string>
+    <string name="toolbar_title">Smart Recruit</string>
+
+    <string name="title_activity_candidat">Candidat</string>
+    <string name="title_activity_recruiter">Recruteur</string>
 </resources>

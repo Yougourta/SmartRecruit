@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/offer_image"
+            android:id="@+id/favoriteOffer_image"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:layout_alignParentTop="true"
@@ -22,7 +22,7 @@
             android:visibility="gone"/>
 
         <TextView
-            android:id="@+id/offer_position"
+            android:id="@+id/favoriteOffer_position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -36,7 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/offer_image" />
+            app:layout_constraintTop_toBottomOf="@+id/favoriteOffer_image" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -49,17 +49,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/offer_position">
+            app:layout_constraintTop_toBottomOf="@+id/favoriteOffer_position">
 
             <ImageView
-                android:id="@+id/offer_company_img"
+                android:id="@+id/favoriteOffer_company_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 app:srcCompat="@drawable/ic_app_jobtype_black_24dp"/>
 
             <TextView
-                android:id="@+id/offer_company"
+                android:id="@+id/favoriteOffer_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -81,14 +81,14 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <ImageView
-                android:id="@+id/offer_location_img"
+                android:id="@+id/favoriteOffer_location_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 app:srcCompat="@drawable/ic_app_jobplace_black_24dp"/>
 
             <TextView
-                android:id="@+id/offer_location"
+                android:id="@+id/favoriteOffer_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -98,7 +98,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/offer_description"
+            android:id="@+id/favoriteOffer_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -125,17 +125,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/offer_description">
+            app:layout_constraintTop_toBottomOf="@+id/favoriteOffer_description">
 
             <ImageView
-                android:id="@+id/offer_date_posted_img"
+                android:id="@+id/favoriteOffer_date_posted_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 app:srcCompat="@drawable/ic_date_posted_black_24dp" />
 
             <TextView
-                android:id="@+id/offer_posted"
+                android:id="@+id/favoriteOffer_posted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

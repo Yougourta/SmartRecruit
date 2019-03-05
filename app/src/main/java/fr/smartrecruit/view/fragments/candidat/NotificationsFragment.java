@@ -1,4 +1,4 @@
-package fr.smartrecruit.view.fragments;
+package fr.smartrecruit.view.fragments.candidat;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import fr.smartrecruit.R;
 
 public class NotificationsFragment extends Fragment {
+
+    public NotificationsFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

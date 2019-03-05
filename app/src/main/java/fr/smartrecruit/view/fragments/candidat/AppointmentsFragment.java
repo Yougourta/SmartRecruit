@@ -1,4 +1,4 @@
-package fr.smartrecruit.view.fragments;
+package fr.smartrecruit.view.fragments.candidat;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.controller.AppointmentsAdapter;
-import fr.smartrecruit.controller.AppointmentsController;
+import fr.smartrecruit.controller.candidat.AppointmentsAdapter;
+import fr.smartrecruit.controller.candidat.AppointmentsController;
 
 public class AppointmentsFragment extends Fragment {
     private AppointmentsController appointmentsController = new AppointmentsController();
@@ -30,13 +30,11 @@ public class AppointmentsFragment extends Fragment {
     }
 
     public void initAdapter() {
-        AppointmentsAdapter appointmentsAdapter = new AppointmentsAdapter(appointmentsController.getAppointmentsList());
+        AppointmentsAdapter appointmentsAdapter = new AppointmentsAdapter(null);
         applicationsRecycler.setAdapter(appointmentsAdapter);
         applicationsRecycler.setHasFixedSize(true);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         applicationsRecycler.setLayoutManager(llm);
-
-        
     }
 }
