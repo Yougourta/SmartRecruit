@@ -163,6 +163,9 @@ public class SmarRecruitApi {
                         case DataConstants.APP_RDV_ATT:
                             Toast.makeText(context, "Application sent", Toast.LENGTH_SHORT).show();
                             break;
+                        case DataConstants.APP_RDV_RECU:
+                            Toast.makeText(context, "Appointment scheduled", Toast.LENGTH_SHORT).show();
+                            break;
                         default:
                             break;
                     }
@@ -251,6 +254,27 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
+    public void setAppointment(final String offer, String date, String time){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        final String url = DataConstants.SERVER_URL+"/scheduleAppointment?recruiter="+RECRUITER_ID+"&applicant="+USER_ID+"&offer="+offer+"&date="+date+"&time="+time;
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                JsonParser parser = new JsonParser();
+                String response = parser.parse(s).getAsJsonObject().get("response").getAsString();
+                if ("success".equals(response))
+                    updateStatus(offer, DataConstants.APP_RDV_RECU);
+                else if ("error".equals(response))
+                    Toast.makeText(context, "An error occurred x(", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.d("Error", volleyError.getMessage());
+            }
+        });
+        queue.add(request);
+    }
 
     /** Applicant methods **/
     public List<JobOffer> getFavoriteOffers(){
@@ -275,7 +299,6 @@ public class SmarRecruitApi {
     public RecAppointment getRecAppointment(JsonObject jsonObject){
         RecAppointment appointment = new RecAppointment();
         appointment.setApplicant(jsonObject.get("applicant").getAsString());
-        appointment.setLocation(jsonObject.get("location").getAsString());
         appointment.setPosition(jsonObject.get("position").getAsString());
         appointment.setOffer(jsonObject.get("offer").getAsString());
         return appointment;

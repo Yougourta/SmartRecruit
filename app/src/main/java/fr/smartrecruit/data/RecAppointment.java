@@ -1,18 +1,9 @@
 package fr.smartrecruit.data;
 
 public class RecAppointment {
-    private String location;
     private String applicant;
     private String position;
     private String offer;
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
     public String getApplicant() {
         return applicant;
