@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_app_jobs_black_24dp"
         android:title="@string/title_applications" />
 
-    <item
+    <!--<item
         android:id="@+id/navigation_appointments"
         android:icon="@drawable/ic_app_appointments_black_24dp"
         android:title="@string/title_appointments" />
@@ -24,6 +24,6 @@
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_app_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:title="@string/title_notifications" />-->
 
 </menu>

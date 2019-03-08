@@ -1,12 +1,16 @@
 package fr.smartrecruit.view.fragments.recruteur;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,8 +19,10 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 
+import java.util.Calendar;
 import java.util.List;
 
 import fr.smartrecruit.R;
@@ -30,11 +36,17 @@ public class MyAppointmentsFragment extends Fragment {
     private MyAppointmentsAdapter appointmentsAdapter;
     private List<RecAppointment> appointments;
 
+    public String aa = "";
+    public String mm = "";
+    public String jj = "";
+
+    public String hh = "";
+    public String mnt = "";
+
     public MyAppointmentsFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_appointments, container, false);
         findViews(view);
         initAdapter();
@@ -66,12 +78,86 @@ public class MyAppointmentsFragment extends Fragment {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                int position = viewHolder.getAdapterPosition();
-                if (direction == ItemTouchHelper.LEFT)
-                    MyAppointmentsController.getMyAppointmentsController().rejectApplication(appointments.get(position).getOffer());
-                if (direction == ItemTouchHelper.RIGHT)
-                    Toast.makeText(getContext(), "Pick date and time", Toast.LENGTH_SHORT).show();
-                appointmentsAdapter.removeItem(position);
+                final int position = viewHolder.getAdapterPosition();
+                if (direction == ItemTouchHelper.LEFT) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setCancelable(true);
+                    builder.setTitle("Reject application");
+                    builder.setMessage("Do you really want to reject this application ?");
+                    builder.setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    MyAppointmentsController.getMyAppointmentsController().rejectApplication(appointments.get(position).getOffer());
+                                    appointmentsAdapter.removeItem(position);
+                                    dialog.dismiss();
+                                }
+                            });
+                    builder.setNegativeButton("No",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    appointmentsAdapter.notifyDataSetChanged();
+                                    dialog.dismiss();
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }else if (direction == ItemTouchHelper.RIGHT){
+                    Calendar mcurrentTime = Calendar.getInstance();
+                    int mYear = mcurrentTime.get(Calendar.YEAR); // current year
+                    int mMonth = mcurrentTime.get(Calendar.MONTH); // current month
+                    int mDay = mcurrentTime.get(Calendar.DAY_OF_MONTH); // current day
+                    DatePickerDialog mDatePicker;
+                    mDatePicker = new DatePickerDialog(context, R.style.datepicker,new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                            aa = String.valueOf(year);
+                            mm = String.format("%02d", month+1);
+                            jj = String.valueOf(dayOfMonth);
+                            Calendar mcurrentTime2 = Calendar.getInstance();
+                            int hour = mcurrentTime2.get(Calendar.HOUR_OF_DAY);
+                            int minute = mcurrentTime2.get(Calendar.MINUTE);
+                            TimePickerDialog mTimePicker;
+                            mTimePicker = new TimePickerDialog(context, R.style.datepicker, new TimePickerDialog.OnTimeSetListener() {
+                                @Override
+                                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                                    hh = String.valueOf(selectedHour);
+                                    mnt = String.valueOf(selectedMinute);
+                                    // send appointment
+                                    final String date = jj+"/"+mm+"/"+aa;
+                                    final String time = hh+":"+mnt;
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                                    builder.setCancelable(true);
+                                    builder.setTitle("Schedule appointment");
+                                    builder.setMessage("Schedule appoint for :\n"+"Date: "+date+" at "+time);
+                                    builder.setPositiveButton("Yes",
+                                            new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    MyAppointmentsController.getMyAppointmentsController().setAppointment(appointments.get(position).getOffer(), date, time);
+                                                    appointmentsAdapter.removeItem(position);
+                                                    dialog.dismiss();
+                                                }
+                                            });
+                                    builder.setNegativeButton("No",
+                                            new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    appointmentsAdapter.notifyDataSetChanged();
+                                                    dialog.dismiss();
+                                                }
+                                            });
+                                    AlertDialog alert = builder.create();
+                                    alert.show();
+                                }
+                            }, hour, minute, true);//Yes 24 hour time
+                            mTimePicker.show();
+                        }
+                    }, mYear, mMonth, mDay);
+                    mDatePicker.show();
+                    appointmentsAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override

@@ -27,11 +27,14 @@ public class MyAppointmentsController {
     public void rejectApplication(String offerId){
         api.rejectApplication(offerId);
     }
+    public void setAppointment(String offerId, String date, String time){
+        api.setAppointment(offerId, date, time);
+    }
+
 
     public void setApiAdapter(MyAppointmentsAdapter adapter){
         api.setApiAdapter(adapter);
     }
-
     public void refreshAppointments(){
         api.requestRecruiterAppointments();
     }

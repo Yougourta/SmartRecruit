@@ -1,29 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/myOffer_image"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_alignParentTop="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher_round"
+            android:visibility="gone"/>
+
         <TextView
-            android:id="@+id/application_position"
+            android:id="@+id/myOffer_position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="40dp"
             android:text="@string/dummy_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="#000000"
-            android:textSize="24sp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/myOffer_image" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -36,23 +49,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/application_position">
+            app:layout_constraintTop_toBottomOf="@+id/myOffer_position">
 
             <ImageView
-                android:id="@+id/application_company_img"
+                android:id="@+id/myOffer_company_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                app:srcCompat="@drawable/ic_app_jobtype_black_24dp" />
+                app:srcCompat="@drawable/ic_app_jobtype_black_24dp"/>
 
             <TextView
-                android:id="@+id/application_company"
+                android:id="@+id/myOffer_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="8dp"
                 android:text="@string/dummy_text"
-                android:textColor="#ACACAC" />
+                android:textColor="#424242" />
         </LinearLayout>
 
         <LinearLayout
@@ -68,55 +81,67 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <ImageView
-                android:id="@+id/application_location_img"
+                android:id="@+id/myOffer_location_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                app:srcCompat="@drawable/ic_app_jobplace_black_24dp" />
+                app:srcCompat="@drawable/ic_app_jobplace_black_24dp"/>
 
             <TextView
-                android:id="@+id/application_location"
+                android:id="@+id/myOffer_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="8dp"
                 android:text="@string/dummy_text"
-                android:textColor="#ACACAC" />
+                android:textColor="#424242" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/application_posted"
+            android:id="@+id/myOffer_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:maxLines = "3"
+            android:ellipsize="end"
+            android:text="@string/dummy_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/dummy_text"
-            android:textColor="#424242"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout3" />
-
-        <TextView
-            android:id="@+id/application_status"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/rounded_corner"
-            android:elevation="2dp"
-            android:padding="2dp"
-            android:text="Badge Status"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/application_posted"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
-    </android.support.constraint.ConstraintLayout>
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myOffer_description">
 
-</LinearLayout>
+            <ImageView
+                android:id="@+id/myOffer_date_posted_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@drawable/ic_date_posted_black_24dp" />
+
+            <TextView
+                android:id="@+id/myOffer_posted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:text="@string/dummy_text"
+                android:textColor="#424242" />
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>
