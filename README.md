@@ -3,6 +3,7 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Yougourta_SmartRecruit&metric=bugs)](https://sonarcloud.io/dashboard?id=Yougourta_SmartRecruit)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Yougourta_SmartRecruit&metric=alert_status)](https://sonarcloud.io/dashboard?id=Yougourta_SmartRecruit)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Yougourta_SmartRecruit&metric=coverage)](https://sonarcloud.io/dashboard?id=Yougourta_SmartRecruit)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Yougourta_SmartRecruit&metric=code_smells)](https://sonarcloud.io/dashboard?id=Yougourta_SmartRecruit)
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/Yougourta/SmartRecruit.svg?columns=all)](https://waffle.io/Yougourta/SmartRecruit)
 [![License](https://img.shields.io/github/license/Yougourta/SmartRecruit.svg?style=flat-square)](LICENSE)
 [![Version](https://img.shields.io/github/tag/Yougourta/SmartRecruit.svg?label=version&style=flat-square)](build.gradle)
@@ -17,6 +18,7 @@ SmartRecruit is an Android App designed to help you easily get a job using anony
 -   [Volley](https://developer.android.com/training/volley/)
 -   [Gson](https://github.com/google/gson)
 -   [Picasso](http://square.github.io/picasso/)
+-   [SwipeDecorator](https://github.com/xabaras/RecyclerViewSwipeDecorator)
 
 ## APIs
 -   [SmartRecruitAPI](https://github.com/KarimFatimazahrae/SmartRecruit-Backend.git)
