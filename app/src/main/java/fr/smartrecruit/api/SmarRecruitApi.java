@@ -21,6 +21,7 @@ import fr.smartrecruit.controller.candidat.ApplicationsAdapter;
 import fr.smartrecruit.controller.candidat.FavoritesAdapter;
 import fr.smartrecruit.controller.candidat.OffersAdapter;
 import fr.smartrecruit.controller.recruiter.MyAppointmentsAdapter;
+import fr.smartrecruit.controller.recruiter.MyOffersAdapter;
 import fr.smartrecruit.data.Applicant;
 import fr.smartrecruit.data.DataConstants;
 import fr.smartrecruit.data.JobOffer;
@@ -37,11 +38,13 @@ public class SmarRecruitApi {
     private List<JobOffer> applications = new ArrayList();
     private List<JobOffer> favorites = new ArrayList();
     private List<RecAppointment> recruiterAppointments = new ArrayList();
+    private List<JobOffer> myOffers = new ArrayList();
 
     private OffersAdapter offersAdapter;
     private ApplicationsAdapter applicationsAdapter;
     private FavoritesAdapter favoritesAdapter;
     private MyAppointmentsAdapter recruiterAppointmentsAdapter;
+    private MyOffersAdapter myOffersAdapter;
 
     public SmarRecruitApi(Context context){
         this.context = context;
@@ -73,6 +76,7 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
+
 
     public void requestFavorites(){
         favorites.clear();
@@ -276,6 +280,52 @@ public class SmarRecruitApi {
         queue.add(request);
     }
 
+    public void requestOffersRecruiter(){
+        myOffers.clear();
+        RequestQueue queue = Volley.newRequestQueue(context);
+        final String url = DataConstants.SERVER_URL+"/offersRecuiter?recruiter="+USER_ID;
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                JsonParser parser = new JsonParser();
+                JsonArray resultsJsonObject = parser.parse(s).getAsJsonObject().get("my-offers").getAsJsonArray();
+                for (int i=0; i<resultsJsonObject.size(); i++){
+                    JsonObject jsonObject = resultsJsonObject.get(i).getAsJsonObject();
+                    JobOffer jobOfferRecruiter = getJobOffer(jsonObject);
+                    myOffers.add(jobOfferRecruiter);
+                }
+                myOffersAdapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.d("Error", volleyError.getMessage());
+            }
+        });
+        queue.add(request);
+    }
+    public void createOffer(JobOffer offer){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        final String url = DataConstants.SERVER_URL+"/addOffreRecuiter?recruiter="+RECRUITER_ID+"&offer="+offer.getId()+"&position="+offer.getPosition()+"&company="+offer.getCompany()+"&location="+offer.getLocation()+"&date="+offer.getDatePosted()+"&desc="+offer.getDescription();
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                JsonParser parser = new JsonParser();
+                String response = parser.parse(s).getAsJsonObject().get("response").getAsString();
+                if ("success".equals(response))
+                    Toast.makeText(context, "Offer created successfully", Toast.LENGTH_SHORT).show();
+                else if ("error".equals(response))
+                    Toast.makeText(context, "An error occurred x(", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.d("Error", volleyError.getMessage());
+            }
+        });
+        queue.add(request);
+    }
+
     /** Applicant methods **/
     public List<JobOffer> getFavoriteOffers(){
         return this.favorites;
@@ -291,7 +341,6 @@ public class SmarRecruitApi {
         jobOffer.setLocation(jsonObject.get("location").getAsString());
         jobOffer.setDatePosted(jsonObject.get("datePosted").getAsString());
         jobOffer.setDescription(jsonObject.get("description").getAsString());
-        jobOffer.setImg(jsonObject.get("img").getAsString());
         return jobOffer;
     }
 
@@ -304,6 +353,9 @@ public class SmarRecruitApi {
         return appointment;
     }
     public List<RecAppointment> getRecruiterAppointments(){ return  recruiterAppointments; }
+    public List<JobOffer> getMyOffers(){
+        return this.myOffers;
+    }
 
     /** adapters **/
     public void setApiAdapter(OffersAdapter adapter){
@@ -316,4 +368,7 @@ public class SmarRecruitApi {
         this.favoritesAdapter = adapter;
     }
     public void setApiAdapter(MyAppointmentsAdapter adapter){this.recruiterAppointmentsAdapter = adapter; }
+    public void setApiAdapter(MyOffersAdapter adapter){
+        this.myOffersAdapter = adapter;
+    }
 }
