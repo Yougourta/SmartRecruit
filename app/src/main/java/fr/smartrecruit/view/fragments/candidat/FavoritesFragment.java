@@ -54,7 +54,6 @@ public class FavoritesFragment extends Fragment {
         favoriteOffersRecycler.setLayoutManager(llm);
         favoriteOffersRecycler.setItemAnimator(new DefaultItemAnimator());
         favoriteOffersRecycler.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-
         ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
