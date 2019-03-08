@@ -24,6 +24,14 @@ public class MyOffersController {
         return api.getMyOffers();
     }
 
+    public void createOffer(JobOffer offer){
+        api.createOffer(offer);
+    }
+
+    public void refreshMyOffers(){
+        api.requestOffersRecruiter();
+    }
+
     public void setApiAdapter(MyOffersAdapter adapter){
         api.setApiAdapter(adapter);
     }
