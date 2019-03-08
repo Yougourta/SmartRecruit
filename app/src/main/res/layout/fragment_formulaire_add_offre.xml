@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/titre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Titre de l'offre"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/entreprise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entreprise"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/localisation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Localisation"
+            android:inputType="text" />
+
+        <RadioGroup
+            android:id="@+id/contrat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/STAGE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Stage" />
+
+            <RadioButton
+                android:id="@+id/ALTERNANCE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Alternance" />
+
+            <RadioButton
+                android:id="@+id/CDD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="CDD" />
+
+            <RadioButton
+                android:id="@+id/CDI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="CDI" />
+
+            <RadioButton
+                android:id="@+id/INTERIM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Interim" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/datePublication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date de publication de l'offre"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/descriptif"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:ems="10"
+            android:hint="Description de l'offre"
+            android:inputType="textLongMessage" />
+
+
+        <Button
+            android:id="@+id/ajouterOffre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Submit"
+            android:text="Ajouter"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
