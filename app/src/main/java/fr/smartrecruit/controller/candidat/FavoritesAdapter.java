@@ -82,11 +82,6 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
         }
 
         public void setView(Context context, JobOffer offer){
-                /*Picasso.get()
-                        .load(offer.getImg())
-                        .fit()
-                        .centerCrop()
-                        .into(image);*/
             position.setText(offer.getPosition());
             company.setText(offer.getCompany());
             location.setText(offer.getLocation());

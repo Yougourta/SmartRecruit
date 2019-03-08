@@ -27,4 +27,5 @@
 
     <string name="title_activity_candidat">Applicant</string>
     <string name="title_activity_recruiter">Recruiter</string>
+    <string name="ajouter_un_offre">Ajouter un offre</string>
 </resources>
