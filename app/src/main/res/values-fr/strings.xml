@@ -10,7 +10,7 @@
     <string name="hello_notifications_fragment">Bonjour fragment notifications</string>
 
     <string name="dummy_text">Lorem Ipsum</string>
-    <string name="title_activity_offer_detail">OfferDetailActivity</string>
+    <string name="title_activity_offer_detail">Détails Offre</string>
 
     <string name="title_activity_candidat">Candidat</string>
     <string name="title_activity_recruiter">Recruteur</string>
