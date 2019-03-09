@@ -19,8 +19,10 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import fr.smartrecruit.R;
+import fr.smartrecruit.api.SmarRecruitApi;
 import fr.smartrecruit.controller.candidat.FavoritesAdapter;
 import fr.smartrecruit.controller.candidat.FavoritesController;
+import fr.smartrecruit.data.DataConstants;
 import fr.smartrecruit.data.JobOffer;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
@@ -54,7 +56,7 @@ public class FavoritesFragment extends Fragment {
         favoriteOffersRecycler.setLayoutManager(llm);
         favoriteOffersRecycler.setItemAnimator(new DefaultItemAnimator());
         favoriteOffersRecycler.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-        ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
@@ -62,9 +64,15 @@ public class FavoritesFragment extends Fragment {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                int position = viewHolder.getAdapterPosition();
-                FavoritesController.getFavoritesController().removeFavorite(favoriteOffers.get(position).getId());
-                favoriteOffersAdapter.removeItem(position);
+                if (direction == ItemTouchHelper.LEFT){
+                    int position = viewHolder.getAdapterPosition();
+                    FavoritesController.getFavoritesController().removeFavorite(favoriteOffers.get(position).getId());
+                    favoriteOffersAdapter.removeItem(position);
+                }else if (direction == ItemTouchHelper.RIGHT){
+                    int position = viewHolder.getAdapterPosition();
+                    new SmarRecruitApi(context).updateStatus(favoriteOffers.get(position).getId(), DataConstants.APP_RDV_ATT);
+                    favoriteOffersAdapter.removeItem(position);
+                }
             }
 
             @Override
@@ -72,6 +80,8 @@ public class FavoritesFragment extends Fragment {
                 new RecyclerViewSwipeDecorator.Builder(context, c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
                         .addSwipeLeftBackgroundColor(ContextCompat.getColor(context, R.color.deleteColor))
                         .addSwipeLeftActionIcon(R.drawable.ic_favorite_border_white_36dp)
+                        .addSwipeRightBackgroundColor(ContextCompat.getColor(context, R.color.favoriteColor))
+                        .addSwipeRightActionIcon(R.drawable.ic_check_white_36dp)
                         .create()
                         .decorate();
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
