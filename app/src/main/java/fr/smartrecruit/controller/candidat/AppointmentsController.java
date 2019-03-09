@@ -1,21 +1,34 @@
 package fr.smartrecruit.controller.candidat;
 
 
-import java.util.ArrayList;
+import android.content.Context;
+
 import java.util.List;
 
+import fr.smartrecruit.api.SmarRecruitApi;
 import fr.smartrecruit.data.Appointment;
-import fr.smartrecruit.data.JobOffer;
 
 public class AppointmentsController {
-    private List<Appointment> appointments = new ArrayList();
-    private final String APPLICANT_ID = "Random Applicant ID";
-    private final String DATE_HOUR = "01/28/2019 : 10PM";
-    private final JobOffer jobOffer = new JobOffer("Random #", "Random #", "Random #", "Random #", "Random #", "https://www.imgonline.com.ua/examples/random-pixels-wallpaper-big.jpg");
+    private static AppointmentsController appointmentsController;
+    private SmarRecruitApi api;
 
-    public List<Appointment> getAppointmentsList(){
-        Appointment appointment = new Appointment(APPLICANT_ID, DATE_HOUR, jobOffer);
-        for(int i=0; i<3; i++){ appointments.add(appointment); }
-        return appointments;
+    private AppointmentsController() {}
+
+    public static AppointmentsController getAppointmentsController(){
+        if (appointmentsController == null)
+            appointmentsController = new AppointmentsController();
+        return appointmentsController;
+    }
+
+    public List<Appointment> getAppointments(Context context){
+        api = new SmarRecruitApi(context);
+        api.requestApplicantScheduledAppointments();
+        return api.getApplicantScheduledAppointments();
+    }
+    public void setApiAdapter(AppointmentsAdapter adapter){
+        api.setApiAdapter(adapter);
+    }
+    public void refreshAppointments(){
+        api.requestApplicantScheduledAppointments();
     }
 }

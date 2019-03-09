@@ -1,21 +1,17 @@
 package fr.smartrecruit.controller.recruiter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.data.FragmentConstants;
 import fr.smartrecruit.data.JobOffer;
-import fr.smartrecruit.view.activities.OfferDetailActivity;
 
 public class MyOffersAdapter  extends RecyclerView.Adapter<MyOffersAdapter.MyOffersViewHolder> {
 

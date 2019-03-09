@@ -2,7 +2,6 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -32,7 +31,7 @@
             android:text="@string/dummy_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +51,6 @@
             app:layout_constraintTop_toBottomOf="@+id/offer_position">
 
             <ImageView
-                android:id="@+id/offer_company_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -81,7 +79,6 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <ImageView
-                android:id="@+id/offer_location_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -114,7 +111,6 @@
             android:visibility="gone"/>
 
         <LinearLayout
-            android:id="@+id/linearLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -128,7 +124,6 @@
             app:layout_constraintTop_toBottomOf="@+id/offer_description">
 
             <ImageView
-                android:id="@+id/offer_date_posted_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

@@ -2,12 +2,14 @@ package fr.smartrecruit.controller.candidat;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import fr.smartrecruit.R;
@@ -17,8 +19,7 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
     private List<Appointment> appointments;
 
     public AppointmentsAdapter(List<Appointment> appointments){
-        //this.appointments = appointments;
-        this.appointments = new ArrayList();
+        this.appointments = appointments;
     }
 
     @NonNull
@@ -44,24 +45,38 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
         private TextView company;
         private TextView position;
         private TextView location;
-        private TextView date;
+        private TextView day;
+        private TextView hour;
 
         public AppointmentsViewHolder(@NonNull View itemView) {
             super(itemView);
             findViews(itemView);
         }
         public void findViews(View view){
-            company = view.findViewById(R.id.appointment_company);
-            position = view.findViewById(R.id.appointment_position);
-            location = view.findViewById(R.id.appointment_location);
-            date = view.findViewById(R.id.appointment_date);
+            company = view.findViewById(R.id.app_sched_appointments_company);
+            position = view.findViewById(R.id.app_sched_appointments_position);
+            location = view.findViewById(R.id.app_sched_appointments_location);
+            day = view.findViewById(R.id.app_sched_appointments_day);
+            hour = view.findViewById(R.id.app_sched_appointments_hour);
         }
 
         public void setView(Appointment appointment){
-            position.setText(appointment.getJobOffer().getPosition());
-            company.setText(appointment.getJobOffer().getCompany());
-            location.setText(appointment.getJobOffer().getLocation());
-            date.setText(appointment.getDateHour());
+            position.setText(appointment.getPosition());
+            company.setText(appointment.getCompany());
+            location.setText(appointment.getLocation());
+            try {
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = format.parse(appointment.getDay());
+                Log.d("appointment", appointment.getDay());
+                SimpleDateFormat sdf2 = new SimpleDateFormat("EE dd MMMM yyyy");
+                String stringDate2 = sdf2.format(date);
+                Log.d("appointment", stringDate2);
+                day.setText(stringDate2);
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+            hour.setText(appointment.getHour());
         }
     }
 }

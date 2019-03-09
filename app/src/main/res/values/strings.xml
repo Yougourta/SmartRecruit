@@ -1,31 +1,17 @@
 <resources>
     <string name="app_name">SmartRecruit</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_offers">OffersActivity</string>
 
     <string name="title_home">Home</string>
     <string name="title_favorite">Favorites</string>
     <string name="title_applications">Jobs</string>
     <string name="title_appointments">Appointments</string>
-    <string name="title_tips">Tips</string>
-    <string name="title_notifications">Notifications</string>
 
 
-    <string name="hello_applications_fragment">Hello applications fragment</string>
-    <string name="hello_tips_fragment">Hello tips fragment</string>
-    <string name="hello_appointments_fragment">Hello appointments fragment</string>
     <string name="hello_notifications_fragment">Hello notifications fragment</string>
 
     <string name="dummy_text">Lorem Ipsum</string>
     <string name="title_activity_offer_detail">OfferDetailActivity</string>
 
-    <string name="text_posted">Posted on : %1$s</string>
-
-    <string name="action_search">Search</string>
-    <string name="search_hint">Type text…</string>
-    <string name="toolbar_title">Smart Recruit</string>
-
     <string name="title_activity_candidat">Applicant</string>
     <string name="title_activity_recruiter">Recruiter</string>
-    <string name="ajouter_un_offre">Ajouter un offre</string>
 </resources>

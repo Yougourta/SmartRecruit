@@ -18,12 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.smartrecruit.controller.candidat.ApplicationsAdapter;
+import fr.smartrecruit.controller.candidat.AppointmentsAdapter;
 import fr.smartrecruit.controller.candidat.FavoritesAdapter;
 import fr.smartrecruit.controller.candidat.OffersAdapter;
 import fr.smartrecruit.controller.recruiter.MyAppointmentsAdapter;
 import fr.smartrecruit.controller.recruiter.MyOffersAdapter;
 import fr.smartrecruit.controller.recruiter.MyScheduledAppointmentsAdapter;
 import fr.smartrecruit.data.Applicant;
+import fr.smartrecruit.data.Appointment;
 import fr.smartrecruit.data.DataConstants;
 import fr.smartrecruit.data.JobOffer;
 import fr.smartrecruit.data.RecAppointment;
@@ -39,6 +41,7 @@ public class SmarRecruitApi {
     private List<JobOffer> applications = new ArrayList();
     private List<JobOffer> favorites = new ArrayList();
     private List<RecAppointment> recruiterAppointments = new ArrayList();
+    private List<Appointment> applicantAppointments = new ArrayList();
     private List<RecAppointment> recruiterScheduledAppointments = new ArrayList();
     private List<JobOffer> myOffers = new ArrayList();
 
@@ -48,6 +51,7 @@ public class SmarRecruitApi {
     private MyAppointmentsAdapter recruiterAppointmentsAdapter;
     private MyOffersAdapter myOffersAdapter;
     private MyScheduledAppointmentsAdapter myScheduledAppointmentsAdapter;
+    private AppointmentsAdapter appointmentsAdapter;
 
     public SmarRecruitApi(Context context){
         this.context = context;
@@ -79,8 +83,6 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
-
-
     public void requestFavorites(){
         favorites.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -105,7 +107,6 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
-
     public void requestApplications(){
         applications.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -131,7 +132,6 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
-
     public void removeFavorite(String idOffer){
         RequestQueue queue = Volley.newRequestQueue(context);
         final String url = DataConstants.SERVER_URL+"/removeFavorite?applicant="+USER_ID+"&offer="+idOffer;
@@ -153,7 +153,6 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
-
     public void updateStatus(String idOffer, final String status){
         RequestQueue queue = Volley.newRequestQueue(context);
         final String url = DataConstants.SERVER_URL+"/updateStatus?status="+status+"&applicant="+USER_ID+"&offer="+idOffer;
@@ -188,7 +187,6 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
-
     public void addFavorite(String idOffer){
         RequestQueue queue = Volley.newRequestQueue(context);
         final String url = DataConstants.SERVER_URL+"/addFavorite?applicant="+USER_ID+"&offer="+idOffer;
@@ -210,9 +208,29 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
-
-    public List<JobOffer> getOffers(){
-        return this.offers;
+    public void requestApplicantScheduledAppointments(){
+        applicantAppointments.clear();
+        RequestQueue queue = Volley.newRequestQueue(context);
+        final String url = DataConstants.SERVER_URL+"/applicantAppointments?applicant="+USER_ID;
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                JsonParser parser = new JsonParser();
+                JsonArray resultsJsonObject = parser.parse(s).getAsJsonObject().get("job-appointments").getAsJsonArray();
+                for (int i=0; i<resultsJsonObject.size(); i++){
+                    JsonObject jsonObject = resultsJsonObject.get(i).getAsJsonObject();
+                    Appointment appointment = getApplicantAppointment(jsonObject);
+                    applicantAppointments.add(appointment);
+                }
+                appointmentsAdapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.d("Error", volleyError.getMessage());
+            }
+        });
+        queue.add(request);
     }
 
     /** Recruiter requests section **/
@@ -282,7 +300,6 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
-
     public void requestOffersRecruiter(){
         myOffers.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -307,11 +324,10 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
-
     public void requestRecruiterScheduledAppointments(){
         recruiterScheduledAppointments.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL+"/recruiterAppointments?recruiter="+USER_ID;
+        final String url = DataConstants.SERVER_URL+"/recruiterAppointments?recruiter="+RECRUITER_ID;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -332,7 +348,6 @@ public class SmarRecruitApi {
         });
         queue.add(request);
     }
-
     public void createOffer(JobOffer offer){
         RequestQueue queue = Volley.newRequestQueue(context);
         final String url = DataConstants.SERVER_URL+"/addOffreRecuiter?recruiter="+RECRUITER_ID+"&offer="+offer.getId()+"&position="+offer.getPosition()+"&company="+offer.getCompany()+"&location="+offer.getLocation()+"&date="+offer.getDatePosted()+"&desc="+offer.getDescription();
@@ -372,6 +387,19 @@ public class SmarRecruitApi {
         jobOffer.setDescription(jsonObject.get("description").getAsString());
         return jobOffer;
     }
+    public List<Appointment> getApplicantScheduledAppointments(){ return  applicantAppointments; }
+    public Appointment getApplicantAppointment(JsonObject jsonObject){
+        Appointment appointment = new Appointment();
+        appointment.setCompany(jsonObject.get("company").getAsString());
+        appointment.setPosition(jsonObject.get("position").getAsString());
+        appointment.setLocation(jsonObject.get("location").getAsString());
+        appointment.setHour(jsonObject.get("hour").getAsString());
+        appointment.setDay(jsonObject.get("day").getAsString());
+        return appointment;
+    }
+    public List<JobOffer> getOffers(){
+        return this.offers;
+    }
 
     /** Recruiter methods**/
     public RecAppointment getRecAppointment(JsonObject jsonObject){
@@ -410,4 +438,5 @@ public class SmarRecruitApi {
         this.myOffersAdapter = adapter;
     }
     public void setApiAdapter(MyScheduledAppointmentsAdapter adapter){ this.myScheduledAppointmentsAdapter = adapter; }
+    public void setApiAdapter(AppointmentsAdapter adapter){ this.appointmentsAdapter = adapter; }
 }

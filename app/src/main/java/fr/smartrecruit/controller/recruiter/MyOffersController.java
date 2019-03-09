@@ -1,7 +1,9 @@
 package fr.smartrecruit.controller.recruiter;
 
 import android.content.Context;
+
 import java.util.List;
+
 import fr.smartrecruit.api.SmarRecruitApi;
 import fr.smartrecruit.data.JobOffer;
 

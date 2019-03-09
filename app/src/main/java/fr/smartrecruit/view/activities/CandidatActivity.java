@@ -11,13 +11,14 @@ import android.view.MenuItem;
 
 import fr.smartrecruit.R;
 import fr.smartrecruit.view.fragments.candidat.ApplicationsFragment;
+import fr.smartrecruit.view.fragments.candidat.AppointmentsFragment;
 import fr.smartrecruit.view.fragments.candidat.FavoritesFragment;
 import fr.smartrecruit.view.fragments.candidat.OffersFragment;
 
 public class CandidatActivity extends AppCompatActivity {
 
     private final Fragment offersFm = new OffersFragment();
-    //private final Fragment appointmentsFm = new AppointmentsFragment();
+    private final Fragment appointmentsFm = new AppointmentsFragment();
     private final Fragment applicationsFm = new ApplicationsFragment();
     private final Fragment favoriteFm = new FavoritesFragment();
     //private final Fragment notificationsFm = new NotificationsFragment();
@@ -39,10 +40,10 @@ public class CandidatActivity extends AppCompatActivity {
                 case R.id.navigation_favorite:
                     fm.beginTransaction().replace(R.id.frame, favoriteFm).commit();
                     return true;
-                /*case R.id.navigation_appointments:
+                case R.id.navigation_appointments:
                     fm.beginTransaction().replace(R.id.frame, appointmentsFm).commit();
                     return true;
-                case R.id.navigation_notifications:
+                /*case R.id.navigation_notifications:
                     fm.beginTransaction().replace(R.id.frame, notificationsFm).commit();
                     return true;*/
                 default:
