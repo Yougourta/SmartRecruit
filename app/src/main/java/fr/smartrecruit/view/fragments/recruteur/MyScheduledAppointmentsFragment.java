@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 
 import fr.smartrecruit.R;
 
-public class MyNotificationsFragment extends Fragment {
+public class MyScheduledAppointmentsFragment extends Fragment {
 
-    public MyNotificationsFragment() { }
+    public MyScheduledAppointmentsFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_notifications, container, false);
+        return inflater.inflate(R.layout.fragment_my_scheduled_appointments, container, false);
     }
 }

@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_recruiter_offers"
-        android:icon="@drawable/ic_app_jobs_black_24dp"
+        android:icon="@drawable/ic_work_black_24dp"
         android:title="@string/title_applications" />
 
     <item
         android:id="@+id/navigation_recruiter_appointments"
-        android:icon="@drawable/ic_app_appointments_black_24dp"
+        android:icon="@drawable/ic_app_jobs_black_24dp"
         android:title="@string/title_appointments" />
 
-    <!--<item
-        android:id="@+id/navigation_recruiter_notifications"
-        android:icon="@drawable/ic_app_notifications_black_24dp"
-        android:title="@string/title_notifications" />-->
+    <item
+        android:id="@+id/navigation_recruiter_scheduled_appointments"
+        android:icon="@drawable/ic_event_available_black_24dp"
+        android:title="@string/title_appointments" />
 </menu>

@@ -4,6 +4,10 @@ public class Appointment {
     private String applicantId;
     private String dateHour;
     private JobOffer jobOffer;
+    private String company;
+    private String position;
+    private String location;
+
 
     public Appointment(String applicantId, String dateHour, JobOffer jobOffer) {
         this.applicantId = applicantId;

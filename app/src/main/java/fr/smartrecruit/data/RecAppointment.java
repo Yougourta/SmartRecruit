@@ -4,6 +4,8 @@ public class RecAppointment {
     private String applicant;
     private String position;
     private String offer;
+    private String day;
+    private String hour;
 
     public String getApplicant() {
         return applicant;
@@ -27,5 +29,21 @@ public class RecAppointment {
 
     public void setOffer(String offer) {
         this.offer = offer;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
     }
 }

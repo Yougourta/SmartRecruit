@@ -12,12 +12,13 @@ import android.view.MenuItem;
 import fr.smartrecruit.R;
 import fr.smartrecruit.view.fragments.recruteur.MyAppointmentsFragment;
 import fr.smartrecruit.view.fragments.recruteur.MyOffersFragment;
+import fr.smartrecruit.view.fragments.recruteur.MyScheduledAppointmentsFragment;
 
 public class RecruteurActivity extends AppCompatActivity {
 
     private final Fragment myOffersFragment = new MyOffersFragment();
     private final Fragment myAppointmentsFm = new MyAppointmentsFragment();
-    //private final Fragment myNotificationsFm = new MyNotificationsFragment();
+    private final Fragment myScheduledAppointmentsFm = new MyScheduledAppointmentsFragment();
     private final FragmentManager fm = getSupportFragmentManager();
 
 
@@ -33,9 +34,9 @@ public class RecruteurActivity extends AppCompatActivity {
                 case R.id.navigation_recruiter_appointments:
                     fm.beginTransaction().replace(R.id.frame_recruteur, myAppointmentsFm).commit();
                     return true;
-                /*case R.id.navigation_recruiter_notifications:
-                    fm.beginTransaction().replace(R.id.frame_recruteur, myNotificationsFm).commit();
-                    return true;*/
+                case R.id.navigation_recruiter_scheduled_appointments:
+                    fm.beginTransaction().replace(R.id.frame_recruteur, myScheduledAppointmentsFm).commit();
+                    return true;
                 default:
                     break;
             }

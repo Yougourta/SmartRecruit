@@ -45,7 +45,6 @@ public class MyAppointmentsAdapter extends RecyclerView.Adapter<MyAppointmentsAd
     public class MyAppointmentsViewHolder extends RecyclerView.ViewHolder{
 
         private TextView position;
-        private TextView location;
         private TextView applicant;
         private TextView offer;
 
