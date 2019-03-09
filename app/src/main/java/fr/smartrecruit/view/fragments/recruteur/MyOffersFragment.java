@@ -1,23 +1,15 @@
 package fr.smartrecruit.view.fragments.recruteur;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Canvas;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +19,12 @@ import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import fr.smartrecruit.R;
-import fr.smartrecruit.controller.candidat.FavoritesAdapter;
-import fr.smartrecruit.controller.candidat.FavoritesController;
 import fr.smartrecruit.controller.recruiter.MyOffersAdapter;
 import fr.smartrecruit.controller.recruiter.MyOffersController;
 import fr.smartrecruit.data.JobOffer;
@@ -67,9 +56,7 @@ public class MyOffersFragment extends Fragment {
                  final EditText company = dialog.findViewById(R.id.company);
                  final EditText localisation = dialog.findViewById(R.id.localisation);
                  final EditText desc = dialog.findViewById(R.id.descriptif);
-
                  Button ajouter = dialog.findViewById(R.id.ajouterOffre);
-
                  ajouter.setOnClickListener(new View.OnClickListener() {
                      @Override
                      public void onClick(View v) {
