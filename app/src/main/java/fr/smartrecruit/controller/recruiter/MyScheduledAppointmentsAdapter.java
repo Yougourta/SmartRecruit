@@ -2,6 +2,7 @@ package fr.smartrecruit.controller.recruiter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,15 +68,16 @@ public class MyScheduledAppointmentsAdapter extends RecyclerView.Adapter<MySched
             try {
                 SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = format.parse(appointment.getDay());
-                SimpleDateFormat sdf2 = new SimpleDateFormat("EE dd MMMM YYYY");
+                Log.d("appointment", appointment.getDay());
+                SimpleDateFormat sdf2 = new SimpleDateFormat("EE dd MMMM yyyy");
                 String stringDate2 = sdf2.format(date);
-
+                Log.d("appointment", stringDate2);
                 day.setText(stringDate2);
-                hour.setText(appointment.getHour());
             }
             catch(Exception e) {
                 e.printStackTrace();
             }
+            hour.setText(appointment.getHour());
         }
     }
 }

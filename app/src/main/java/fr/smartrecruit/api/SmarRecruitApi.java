@@ -311,18 +311,18 @@ public class SmarRecruitApi {
     public void requestRecruiterScheduledAppointments(){
         recruiterScheduledAppointments.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = DataConstants.SERVER_URL+"/offersRecuiter?recruiter="+USER_ID;
+        final String url = DataConstants.SERVER_URL+"/recruiterAppointments?recruiter="+USER_ID;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 JsonParser parser = new JsonParser();
-                JsonArray resultsJsonObject = parser.parse(s).getAsJsonObject().get("appointments-requests").getAsJsonArray();
+                JsonArray resultsJsonObject = parser.parse(s).getAsJsonObject().get("job-appointments").getAsJsonArray();
                 for (int i=0; i<resultsJsonObject.size(); i++){
                     JsonObject jsonObject = resultsJsonObject.get(i).getAsJsonObject();
-                    RecAppointment appointment = getRecAppointment(jsonObject);
+                    RecAppointment appointment = getRecSchedAppointment(jsonObject);
                     recruiterScheduledAppointments.add(appointment);
                 }
-                recruiterAppointmentsAdapter.notifyDataSetChanged();
+                myScheduledAppointmentsAdapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -379,6 +379,14 @@ public class SmarRecruitApi {
         appointment.setApplicant(jsonObject.get("applicant").getAsString());
         appointment.setPosition(jsonObject.get("position").getAsString());
         appointment.setOffer(jsonObject.get("offer").getAsString());
+        return appointment;
+    }
+    public RecAppointment getRecSchedAppointment(JsonObject jsonObject){
+        RecAppointment appointment = new RecAppointment();
+        appointment.setApplicant(jsonObject.get("applicant").getAsString());
+        appointment.setPosition(jsonObject.get("position").getAsString());
+        appointment.setDay(jsonObject.get("day").getAsString());
+        appointment.setHour(jsonObject.get("hour").getAsString());
         return appointment;
     }
     public List<RecAppointment> getRecruiterAppointments(){ return  recruiterAppointments; }
