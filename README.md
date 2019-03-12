@@ -22,7 +22,7 @@ SmartRecruit is an Android App designed to help you easily get a job using anony
 
 ## Build and Generate an APK
 Open Android Studion and :
--   Clone the repository using Version Control (File -> Project from Version Control -> Git -> [repository_link](https://github.com/Yougourta/SmartRecruit.git) -> OK)
+-   Clone the repository using Version Control (File -> Project from Version Control -> Git -> [repository link](https://github.com/Yougourta/SmartRecruit.git) -> OK)
 -   Select View > Tool Windows > Terminal and run :
     -   gradlew assembleDebug
 -   All APKs you build are saved in SmartRecruit/app/build/outputs/apk/debug
