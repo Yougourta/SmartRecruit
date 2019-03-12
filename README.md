@@ -31,14 +31,10 @@ Open Android Studion and :
 -   [SmartRecruitAPI](https://github.com/KarimFatimazahrae/SmartRecruit-Backend.git)
 
 ## Credits
--   [Volley Apache](https://developer.android.com/training/volley/) 
-    [(Licence)](https://github.com/google/volley/blob/master/LICENSE)
--   [Gson](https://github.com/google/gson)
-    [(Licence)](https://github.com/google/gson/blob/master/LICENSE)
--   [Picasso](http://square.github.io/picasso/)
-    [(Licence)](https://github.com/square/picasso/blob/master/LICENSE.txt)
--   [SwipeDecorator](https://github.com/xabaras/RecyclerViewSwipeDecorator)
-    [(Licence)](https://github.com/xabaras/RecyclerViewSwipeDecorator/blob/master/LICENSE)
+-   [Volley Apache](https://developer.android.com/training/volley/) [(Licence)](https://github.com/google/volley/blob/master/LICENSE)
+-   [Gson](https://github.com/google/gson) [(Licence)](https://github.com/google/gson/blob/master/LICENSE)
+-   [Picasso](http://square.github.io/picasso/) [(Licence)](https://github.com/square/picasso/blob/master/LICENSE.txt)
+-   [SwipeDecorator](https://github.com/xabaras/RecyclerViewSwipeDecorator) [(Licence)](https://github.com/xabaras/RecyclerViewSwipeDecorator/blob/master/LICENSE)
 
 ## Contributors
 -   Yougourta AIT SAADA : [Github](https://github.com/Yougourta)
