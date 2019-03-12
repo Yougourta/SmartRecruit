@@ -22,7 +22,6 @@ import fr.smartrecruit.data.RecAppointment;
 public class MyScheduledAppointmentsFragment extends Fragment {
     private RecyclerView appointmentsRecycler;
     private MyScheduledAppointmentsAdapter appointmentsAdapter;
-    private List<RecAppointment> appointments;
 
     public MyScheduledAppointmentsFragment() { }
 
@@ -43,7 +42,7 @@ public class MyScheduledAppointmentsFragment extends Fragment {
 
     public void initAdapter(){
         final Context context = getContext();
-        appointments = MyScheduledAppointmentsController.getMyScheduledAppointmentsController().getRecruiterAppointments(context);
+        List<RecAppointment> appointments = MyScheduledAppointmentsController.getMyScheduledAppointmentsController().getRecruiterAppointments(context);
         appointmentsAdapter = new MyScheduledAppointmentsAdapter(appointments);
         appointmentsRecycler.setAdapter(appointmentsAdapter);
         appointmentsRecycler.setHasFixedSize(true);

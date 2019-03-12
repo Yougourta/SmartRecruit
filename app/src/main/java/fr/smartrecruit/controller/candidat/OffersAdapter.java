@@ -26,9 +26,6 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     private List<JobOffer> offers;
     private Context context;
 
-    private JobOffer mRecentlyDeletedItem;
-    private int mRecentlyDeletedItemPosition;
-
     public OffersAdapter(List<JobOffer> offers, Context context){
         this.offers = offers;
         this.context = context;
@@ -100,8 +97,6 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     }
 
     public void removeItem(int position){
-        mRecentlyDeletedItem = offers.get(position);
-        mRecentlyDeletedItemPosition = position;
         offers.remove(position);
         notifyItemRemoved(position);
         notifyDataSetChanged();

@@ -18,9 +18,6 @@ public class MyOffersAdapter  extends RecyclerView.Adapter<MyOffersAdapter.MyOff
     private List<JobOffer> myOffers;
     private Context context;
 
-    private JobOffer listOffer;
-    private int mRecentlyDeletedItemPosition;
-
     public MyOffersAdapter(List<JobOffer> offers, Context context){
         this.myOffers = offers;
         this.context = context;
@@ -78,13 +75,5 @@ public class MyOffersAdapter  extends RecyclerView.Adapter<MyOffersAdapter.MyOff
             description.setText(myOffer.getDescription());
             postedDate.setText(myOffer.getDatePosted());
         }
-    }
-
-    public void removeItem(int position){
-        listOffer = myOffers.get(position);
-        mRecentlyDeletedItemPosition = position;
-        myOffers.remove(position);
-        notifyItemRemoved(position);
-        notifyDataSetChanged();
     }
 }

@@ -22,9 +22,6 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
     private List<JobOffer> appliedOffers;
     private Context context;
 
-    private JobOffer mRecentlyDeletedItem;
-    private int mRecentlyDeletedItemPosition;
-
     public ApplicationsAdapter(List<JobOffer> appliedOffers, Context context){
         this.appliedOffers = appliedOffers;
         this.context = context;
@@ -90,8 +87,6 @@ public class ApplicationsAdapter extends RecyclerView.Adapter<ApplicationsAdapte
     }
 
     public void removeItem(int position){
-        mRecentlyDeletedItem = appliedOffers.get(position);
-        mRecentlyDeletedItemPosition = position;
         appliedOffers.remove(position);
         notifyItemRemoved(position);
         notifyDataSetChanged();

@@ -22,9 +22,6 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
     private List<JobOffer> offers;
     private Context context;
 
-    private JobOffer mRecentlyDeletedItem;
-    private int mRecentlyDeletedItemPosition;
-
     public FavoritesAdapter(List<JobOffer> offers, Context context){
             this.offers = offers;
             this.context = context;
@@ -91,8 +88,6 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
     }
 
     public void removeItem(int position){
-        mRecentlyDeletedItem = offers.get(position);
-        mRecentlyDeletedItemPosition = position;
         offers.remove(position);
         notifyItemRemoved(position);
         notifyDataSetChanged();

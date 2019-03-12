@@ -16,9 +16,6 @@ public class MyAppointmentsAdapter extends RecyclerView.Adapter<MyAppointmentsAd
 
     private List<RecAppointment> appointments;
 
-    private RecAppointment mRecentlyDeletedItem;
-    private int mRecentlyDeletedItemPosition;
-
     public MyAppointmentsAdapter(List<RecAppointment> appointments){
         this.appointments = appointments;
     }
@@ -67,8 +64,6 @@ public class MyAppointmentsAdapter extends RecyclerView.Adapter<MyAppointmentsAd
     }
 
     public void removeItem(int position){
-        mRecentlyDeletedItem = appointments.get(position);
-        mRecentlyDeletedItemPosition = position;
         appointments.remove(position);
         notifyItemRemoved(position);
         notifyDataSetChanged();

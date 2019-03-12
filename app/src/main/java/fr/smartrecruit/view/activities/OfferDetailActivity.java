@@ -12,14 +12,12 @@ import fr.smartrecruit.databinding.ActivityOfferDetailBinding;
 
 public class OfferDetailActivity extends AppCompatActivity{
 
-    private JobOffer offer;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         /** To refactor to match MVVM pattern */
-        offer = (JobOffer) getIntent().getSerializableExtra("offer");
+        JobOffer offer = (JobOffer) getIntent().getSerializableExtra("offer");
         ActivityOfferDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_offer_detail);
         binding.setOffer(offer);
 

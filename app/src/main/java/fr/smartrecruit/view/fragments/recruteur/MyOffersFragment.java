@@ -32,7 +32,6 @@ import fr.smartrecruit.data.JobOffer;
 public class MyOffersFragment extends Fragment {
 
     private RecyclerView offersRecycler;
-    private List<JobOffer> offers;
     private MyOffersAdapter adapter;
     private JobOffer myoffer;
     public MyOffersFragment() { }
@@ -93,7 +92,7 @@ public class MyOffersFragment extends Fragment {
 
     public void initAdapter(){
         final Context context = getContext();
-        offers = MyOffersController.getMyOffersController().getApiMyOffers(context);
+        List<JobOffer> offers = MyOffersController.getMyOffersController().getApiMyOffers(context);
         adapter = new MyOffersAdapter(offers, context);
         offersRecycler.setAdapter(adapter);
         offersRecycler.setHasFixedSize(true);
