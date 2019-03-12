@@ -31,7 +31,7 @@ cd app/build/outputs/apk/debug
 -   [Gson](https://github.com/google/gson) [(Licence)](https://github.com/google/gson/blob/master/LICENSE)
 -   [Picasso](http://square.github.io/picasso/) [(Licence)](https://github.com/square/picasso/blob/master/LICENSE.txt)
 -   [SwipeDecorator](https://github.com/xabaras/RecyclerViewSwipeDecorator) [(Licence)](https://github.com/xabaras/RecyclerViewSwipeDecorator/blob/master/LICENSE)
--   [SmartRecruit API] (https://github.com/KarimFatimazahrae/SmartRecruit-Backend.git)
+-   [SmartRecruit API](https://github.com/KarimFatimazahrae/SmartRecruit-Backend.git)
 
 ## Contributors
 -   Yougourta AIT SAADA : [Github](https://github.com/Yougourta)
