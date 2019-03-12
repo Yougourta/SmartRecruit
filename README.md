@@ -10,7 +10,7 @@
 SmartRecruit is an Android App designed to help you easily get a job using anonymous profiles to focus your application on your skills. 
 
 ## Download the app
--   [SmartRecruit APK :](https://github.com/Yougourta/SmartRecruit/releases/download/V1.2.0/V1.2.0-beta.apk) On your Android Phone download and install the APK.
+-   [SmartRecruit APK :](https://github.com/Yougourta/SmartRecruit/releases/download/V1.2.0/V1.2.0-beta.apk) on your Android Phone download and install the APK.
 
 ## Pre-requisites
 -   [Android SDK](https://developer.android.com/studio/index.html#command-tools)
@@ -31,6 +31,7 @@ cd app/build/outputs/apk/debug
 -   [Gson](https://github.com/google/gson) [(Licence)](https://github.com/google/gson/blob/master/LICENSE)
 -   [Picasso](http://square.github.io/picasso/) [(Licence)](https://github.com/square/picasso/blob/master/LICENSE.txt)
 -   [SwipeDecorator](https://github.com/xabaras/RecyclerViewSwipeDecorator) [(Licence)](https://github.com/xabaras/RecyclerViewSwipeDecorator/blob/master/LICENSE)
+-   [SmartRecruit API] (https://github.com/KarimFatimazahrae/SmartRecruit-Backend.git)
 
 ## Contributors
 -   Yougourta AIT SAADA : [Github](https://github.com/Yougourta)
