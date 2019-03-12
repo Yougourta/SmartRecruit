@@ -12,9 +12,6 @@ SmartRecruit is an Android App designed to help you easily get a job using anony
 ## Download the app
 -   [SmartRecruit APK :](https://github.com/Yougourta/SmartRecruit/releases/download/V1.2.0/V1.2.0-beta.apk) On your Android Phone download and install the APK.
 
-## Build System
--   [Gradle](https://gradle.org/)
-
 ## Pre-requisites
 -   [Android Studio](https://developer.android.com/studio/) : Download and install Android Studio then the Android SDK (Tools -> SDK Manager)
 
@@ -24,6 +21,9 @@ Open Android Studion and :
 -   Select View > Tool Windows > Terminal and run :
     -   gradlew assembleDebug
 -   All APKs you build are saved in SmartRecruit/app/build/outputs/apk/debug
+
+## Build System
+-   [Gradle](https://gradle.org/)
 
 ## APIs
 -   [SmartRecruitAPI](https://github.com/KarimFatimazahrae/SmartRecruit-Backend.git)
