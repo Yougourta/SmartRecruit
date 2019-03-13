@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="sans-serif-medium"
-            android:text="Applicant"
+            android:text="@string/applicant"
             android:textAlignment="center" />
 
     </LinearLayout>
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="sans-serif-medium"
-            android:text="Recruiter"
+            android:text="@string/recruiter"
             android:textAlignment="center" />
     </LinearLayout>
 
