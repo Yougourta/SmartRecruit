@@ -10,29 +10,28 @@
 SmartRecruit is an Android App designed to help you easily get a job using anonymous profiles to focus your application on your skills. 
 
 ## Download the app
--   [SmartRecruit APK :](https://github.com/Yougourta/SmartRecruit/releases/download/V1.2.0/V1.2.0-beta.apk) On your Android Phone download and install the APK.
-
-## Build System
--   [Gradle](https://gradle.org/)
+-   [SmartRecruit APK :](https://github.com/Yougourta/SmartRecruit/releases/download/V1.2.0/V1.2.0-beta.apk) on your Android Phone download and install the APK.
 
 ## Pre-requisites
--   [Android Studio](https://developer.android.com/studio/) : Download and install Android Studio then the Android SDK (Tools -> SDK Manager)
+-   [Android SDK](https://developer.android.com/studio/index.html#command-tools)
+-   Clone SmartRecruit project 
+```Markdown
+git clone https://github.com/Yougourta/SmartRecruit.git
+```
 
 ## Build and Generate an APK
-Open Android Studion and :
--   Clone the repository using Version Control (File -> Project from Version Control -> Git -> [repository link](https://github.com/Yougourta/SmartRecruit.git) -> OK)
--   Select View > Tool Windows > Terminal and run :
-    -   gradlew assembleDebug
--   All APKs you build are saved in SmartRecruit/app/build/outputs/apk/debug
-
-## APIs
--   [SmartRecruitAPI](https://github.com/KarimFatimazahrae/SmartRecruit-Backend.git)
+```Markdown
+cd SmartRecruit/
+gradlew assembleDebug
+cd app/build/outputs/apk/debug
+```
 
 ## Credits
 -   [Volley Apache](https://developer.android.com/training/volley/) [(Licence)](https://github.com/google/volley/blob/master/LICENSE)
 -   [Gson](https://github.com/google/gson) [(Licence)](https://github.com/google/gson/blob/master/LICENSE)
 -   [Picasso](http://square.github.io/picasso/) [(Licence)](https://github.com/square/picasso/blob/master/LICENSE.txt)
 -   [SwipeDecorator](https://github.com/xabaras/RecyclerViewSwipeDecorator) [(Licence)](https://github.com/xabaras/RecyclerViewSwipeDecorator/blob/master/LICENSE)
+-   [SmartRecruit API](https://github.com/KarimFatimazahrae/SmartRecruit-Backend.git)
 
 ## Contributors
 -   Yougourta AIT SAADA : [Github](https://github.com/Yougourta)
