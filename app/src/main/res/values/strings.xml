@@ -17,4 +17,12 @@
 
     <string name="recruiter">Recruiter</string>
     <string name="applicant">Applicant</string>
+
+    <string name="add_offer">Add Offer</string>
+    <string name="offer_position">Position</string>
+    <string name="company">Company</string>
+    <string name="location">Address</string>
+    <string name="description">Description</string>
+
+    <string name="add">Post</string>
 </resources>
