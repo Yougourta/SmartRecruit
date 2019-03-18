@@ -22,7 +22,7 @@ before_script:
 
 script:
  - chmod +x ./gradlew
- — ./gradlew build jacocoTestReport
+ — chmod +x ./gradlew build jacocoTestReport
  
 after_success: 
  — bash <(curl -s https://codecov.io/bash)
