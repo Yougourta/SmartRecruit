@@ -1,5 +1,5 @@
+
 language: android
-jdk: oraclejdk8
 android:
   components:
     - tools
@@ -8,7 +8,21 @@ android:
     - platform-tools
     - extra-android-support
     - extra-android-m2repository
+  licenses:
+    - '.+'
+
+sudo: required
+
+jdk:
+  - oraclejdk8
+
+install: true
+
+before_script:
+  - chmod +x gradlew
+
 script:
-  - ./gradlew build jacocoTestReport
+ - chmod +x ./gradlew
+ 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
