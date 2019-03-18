@@ -24,6 +24,7 @@ public class MyAppointmentsController {
         api.requestRecruiterAppointments();
         return api.getRecruiterAppointments();
     }
+
     public void rejectApplication(String offerId){
         api.rejectApplication(offerId);
     }

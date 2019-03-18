@@ -37,7 +37,7 @@
             android:id="@+id/btn_candidat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/ic_search_foreground" />
+            android:background="@mipmap/ic_applicant_foreground" />
 
         <TextView
             android:id="@+id/textView1"
@@ -69,7 +69,9 @@
             android:id="@+id/btn_recruiter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/ic_cand_foreground" />
+            android:background="@mipmap/ic_recruiter_foreground"
+            android:scaleX="1.05"
+            android:scaleY="1.05" />
 
         <TextView
             android:id="@+id/textView2"
